@@ -9,7 +9,7 @@ abstract class MovieMeBase implements Record{
   function __construct(){}
 
   public static function get_mysql_credentials(){
-    $file = fopen("../config/database.json", "r");
+    $file = fopen("../../config/database.json", "r");
     $jsonStr = '';
     while(!feof($file)){
         $jsonStr .= fgets($file);
