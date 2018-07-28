@@ -1,3 +1,62 @@
-<p>
-  signup works!
-</p>
+<div class="row">
+  <div class="background">
+    <img class="live-background" src="assets/iw.gif" alt="">
+  </div>
+  <div class="filter">
+    <div class="row justify-content-center">
+      <div class="form col-lg-7 col-md-8 col-sm-8 col-xs-10" align="center">
+        <span class="title">Register</span>
+        <form [formGroup]="signupForm">
+          <hr>
+          <div class="row">
+            <div class="col-12">
+              <div class="row">
+                <div class="form-group col-12">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" formControlName="email" id="email">
+                  <small *ngIf="signupForm.controls.email.invalid && signupForm.controls.email.touched">Invalid email</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="row">
+                <div class="form-group col-12">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" formControlName="name" id="name">
+                  <small *ngIf="signupForm.controls.name.invalid && signupForm.controls.name.touched">Invalid name</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-12">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" formControlName="password" id="password">
+                  <small *ngIf="signupForm.controls.password.invalid && signupForm.controls.password.touched">Invalid password</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <div class="form-group col-12">
+                  <label for="age">Age</label>
+                  <input type="number" class="form-control" formControlName="age" id="age">
+                  <small *ngIf="signupForm.controls.age.invalid && signupForm.controls.age.touched">Invalid age</small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-12">
+                  <label for="repeat-password">Repeat Password</label>
+                  <input type="password" class="form-control" formControlName="repeat-password" id="repeat-password">
+                  <small *ngIf="signupForm.value['password'] !== signupForm.value['repeat-password'] && signupForm.controls['repeat-password'].touched">Passwords must match</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <button type="button" class="btn btn-danger" (click)="submit()">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
