@@ -11,10 +11,10 @@ export class UserService {
   public login(values: {email: string, password: string}, callback, callbackErr){
     this.http.post(environment.api_endpoint+'user/login', values).subscribe(
       success => {
-        callback(success)
+        callback(success.json())
       },
       error => {
-        callbackErr(error)
+        callbackErr(error.json())
       }
     )
   }

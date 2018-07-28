@@ -8,13 +8,15 @@ import { AppComponent } from './app.component'
 import { LoginComponent } from './login/login.component'
 import { SignupComponent } from './signup/signup.component'
 
-import { UserService } from './shared/services/user.service'
+import { UserService } from './shared/services/user.service';
+import { HomeComponent } from './home/home.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    HomeComponent
   ],
   imports: [
     ReactiveFormsModule,

@@ -21,6 +21,10 @@ const user = '/user',
 
 session_start();
 
+$app->options('/[{path:.*}]', function($request, $response){
+  return $response->withStatus(200);
+});
+
 $app->group(user, function () use ($app) {
     $app->post('/create', '\App\Routes\UserRoutes:create');
     $app->post('/login', '\App\Routes\UserRoutes:login');
