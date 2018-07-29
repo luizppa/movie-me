@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    if(!localStorage.getItem('user')){
+    if(!localStorage.getItem('session')){
       this.router.navigate(['login'])
     }
   }

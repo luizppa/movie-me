@@ -89,8 +89,9 @@ class UserRoutes{
   }
 
   public function logout($request, $response){
+    $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
     try {
-      $data = UserController::logout();
+      $data = UserController::logout($access_key);
       return $response->withJson($data)->withStatus($data['status']);
     } catch (\Exception $e) {
       $data = array('type' => 'Error', 'message' => $e->getMessage());

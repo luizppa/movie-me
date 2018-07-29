@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
       'email': ['', [Validators.required, Validators.email]],
       'password': ['', [Validators.required]]
     })
-    if(localStorage.getItem('user')){
+    if(localStorage.getItem('session')){
       this.router.navigate(['home'])
     }
   }

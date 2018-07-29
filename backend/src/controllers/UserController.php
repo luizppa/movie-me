@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use \App\Models\User as User;
+use \App\Models\Session as Session;
 
 class UserController {
 
@@ -22,8 +23,12 @@ class UserController {
     if(isset($_SESSION['user'])) return array('type' => 'Ok', 'status' => 200, 'message' => 'Already logged in!', 'user' => $_SESSION['user']);
     $user = User::find_by(['email' => $params['email'], 'password' => $params['password']]);
     if($user){
-      $_SESSION['user'] = $user;
-      return array('type' => 'Ok', 'status' => 200, 'message' => 'Successfuly logged in!', 'user' => $user);
+      $access_key = substr(base64_encode(sha1(mt_rand())), 0, 16);
+      while (Session::find($access_key)) {
+        $access_key = substr(base64_encode(sha1(mt_rand())), 0, 16);
+      }
+      $session = Session::create(array('access_key' => $access_key, 'user' => $user));
+      return array('type' => 'Ok', 'status' => 200, 'message' => 'Successfuly logged in!', 'session' => $session);
     }
     else {
       throw new \Exception("Email or password incorrects!");
@@ -95,10 +100,10 @@ class UserController {
     }
   }
 
-  public static function logout(){
-    if(isset($_SESSION['user'])){
-      session_destroy();
-      return array('type' => 'Ok', 'status' => 204, 'message' => 'Successfuly logged out');
+  public static function logout($access_key){
+    $response = Session::delete($access_key);
+    if($response){
+      return array('type' => 'Ok', 'status' => 200, 'message' => 'Successfuly logged out');
     }
     else {
       throw new \Exception("Not logged in");

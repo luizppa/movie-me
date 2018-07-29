@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Http, Response } from '@angular/http'
+import { Http, Response, Headers, RequestOptions } from '@angular/http'
 
 import { environment } from '../../../environments/environment'
 
@@ -22,8 +22,8 @@ export class UserService {
   public login(values, callback, callbackErr){
     this.http.post(environment.api_endpoint+'user/login', values).subscribe(
       success => {
-        let user = success.json().user
-        localStorage.setItem('user', JSON.stringify(user))
+        let session = success.json().session
+        localStorage.setItem('session', JSON.stringify(session))
         callback(success.json())
       },
       error => {
@@ -33,17 +33,27 @@ export class UserService {
   }
 
   public logout(callback, callbackErr){
-    this.http.delete(environment.api_endpoint+'user/logout').subscribe(
-      success => {
-        callback(success.json())
-      },
-      error => {
-        callbackErr(error.json())
-      }
-    )
-    if(localStorage.getItem('user')){
-      localStorage.removeItem('user')
+    let session = this.get_session()
+
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.delete(environment.api_endpoint+'user/logout', options).subscribe(
+        success => {
+          callback(success)
+        },
+        error => {
+          callbackErr(error)
+        }
+      )
+      localStorage.removeItem('session')
     }
+  }
+
+  public get_session(){
+    return JSON.parse(localStorage.getItem('session'))
   }
 
 }
