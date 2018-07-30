@@ -30,10 +30,13 @@
 .link:hover{
   color: #F61100;
 }
+.carousel{
+  margin-bottom: 60px;
+}
 .scroll-button{
   cursor: pointer;
   background-color: rgb(20, 20, 20);
-  height: 200px;
+  height: 220px;
   text-align: center;
   color: rgb(100, 100, 100);
 }
@@ -41,11 +44,11 @@
   color: rgb(200, 200, 200);
 }
 .scroll-button>.material-icons{
-  margin: 80px 0px;
+  margin: 90px 0px;
   font-size: 40px;
 }
 .poster-container{
-  max-height: 200px;
+  max-height: 220px;
 }
 .poster{
   cursor: pointer;

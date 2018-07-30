@@ -2,8 +2,8 @@
   <span class="section-title">Top Rated</span><span class="link">see all</span>
 </div>
 <hr>
-<div class="row" *ngIf="movies">
-  <div class="col-1 scroll-button" align="center" (click)="scroll_left()">
+<div class="carousel row" *ngIf="movies">
+  <div class="col-1 scroll-button unselectable" align="center" (click)="scroll_left()">
     <i class="material-icons unselectable">keyboard_arrow_left</i>
   </div>
   <div class="col-2 poster-container" *ngFor="let movie of movies.slice(start, end)">
