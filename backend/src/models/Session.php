@@ -51,12 +51,12 @@ class Session extends MovieMeBase{
   // Get a session from DB based on it's key
   public static function find($access_key){
     $connection = parent::get_connection();
-    $query = 'SELECT * FROM users WHERE access_key = "'.$access_key.'"';
+    $query = 'SELECT * FROM sessions WHERE access_key = "'.$access_key.'"';
     $response = mysqli_query($connection, $query);
+    $row = mysqli_fetch_assoc($response);
+    mysqli_free_result($response);
     mysqli_close($connection);
-    if($response){
-      $row = mysqli_fetch_assoc($response);
-      mysqli_free_result($response);
+    if($row){
       return Session::withParams($row);
     }
     else return false;

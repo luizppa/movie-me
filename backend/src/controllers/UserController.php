@@ -20,12 +20,11 @@ class UserController {
   }
 
   public static function login($params){
-    if(isset($_SESSION['user'])) return array('type' => 'Ok', 'status' => 200, 'message' => 'Already logged in!', 'user' => $_SESSION['user']);
     $user = User::find_by(['email' => $params['email'], 'password' => $params['password']]);
     if($user){
-      $access_key = substr(base64_encode(sha1(mt_rand())), 0, 16);
+      $access_key = substr(base64_encode(sha1(mt_rand())), 0, 32);
       while (Session::find($access_key)) {
-        $access_key = substr(base64_encode(sha1(mt_rand())), 0, 16);
+        $access_key = substr(base64_encode(sha1(mt_rand())), 0, 32);
       }
       $session = Session::create(array('access_key' => $access_key, 'user' => $user));
       return array('type' => 'Ok', 'status' => 200, 'message' => 'Successfuly logged in!', 'session' => $session);
@@ -35,10 +34,10 @@ class UserController {
     }
   }
 
-  public static function getInfo(){
-    if(isset($_SESSION['user'])){
-      $_SESSION['user'] = User::find($_SESSION['user']->id);
-      $user = $_SESSION['user'];
+  public static function getInfo($access_key){
+    $session = Session::find($access_key);
+    if($session){
+      $user = $session->user;
       // $favorites = Favorites::getFrom($user->id);
       // $watch_later = WatchLater::getFrom($user->id);
       // $watched = Watched::getFrom($user->id);
@@ -69,14 +68,20 @@ class UserController {
     }
   }
 
-  public static function update($params){
-    $user = $_SESSION['user'];
-    $success = User::update_one($params, array('id' => $user->getId()));
-    if($success){
-      return array('type' => 'Ok', 'status' => 200, 'message' => 'Successfuly updated!');
+  public static function update($params, $access_key){
+    $session = Session::find($access_key);
+    if($session){
+      $user = $session->user;
+      $success = User::update_one($params, array('id' => $user->getId()));
+      if($success){
+        return array('type' => 'Ok', 'status' => 200, 'message' => 'Successfuly updated!');
+      }
+      else{
+        throw new \Exception("Unable to update!");
+      }
     }
-    else{
-      throw new \Exception("Unable to update!");
+    else {
+      throw new \Exception("Auth required!");
     }
   }
 

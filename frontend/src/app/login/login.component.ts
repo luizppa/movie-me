@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
       'password': ['', [Validators.required]]
     })
     if(localStorage.getItem('session')){
-      this.router.navigate(['home'])
+      this.router.navigate([''])
     }
   }
 
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   public submit(){
     this.userService.login(this.loginForm.value,
       success => {
-        this.router.navigate(['home'])
+        this.router.navigate([''])
       },
       error => {
         this.incorrectLogin = true;

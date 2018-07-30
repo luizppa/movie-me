@@ -1,0 +1,31 @@
+hr{
+  border-color: rgb(60, 60, 60);
+}
+.bar{
+  height: 100vh;
+  background-color: rgb(20, 20, 20);
+  color: rgb(158, 158, 158);
+  padding: 8px 15px;
+}
+.avatar{
+  margin: 20px 0px 15px 0px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.name{
+  font-size: 22px;
+}
+.options{
+  font-size: 15px;
+}
+.item{
+  cursor: pointer;
+  display: block;
+  margin: 10px 0px;
+}
+.material-icons{
+  margin-right: 10px;
+  /* color: #d11205; */
+}

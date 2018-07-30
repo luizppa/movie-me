@@ -28,7 +28,7 @@ export class SignupComponent implements OnInit {
     if(this.signupForm.valid && this.signupForm.value['password'] == this.signupForm.value['repeat-password']){
       this.userService.signup(this.signupForm.value,
         success => {
-          console.log(success)
+          this.router.navigate(['login'])
         },
         error => {
           console.log(error)

@@ -1,4 +1,8 @@
-<p>
-  home works!
-</p>
-<button (click)="logout()">Logout</button>
+<div class="row home">
+  <div class="col-md-2 col-sm-4 col-5" style="padding: 0;">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="col-md-10 col-sm-8 col-7 scrollable">
+    <router-outlet></router-outlet>
+  </div>
+</div>

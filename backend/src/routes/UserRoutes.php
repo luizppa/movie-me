@@ -34,8 +34,9 @@ class UserRoutes{
   }
 
   public function me($request, $response){
+    $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
     try {
-      $data = UserController::getInfo();
+      $data = UserController::getInfo($access_key);
       return $response->withJson($data)->withStatus($data['status']);
     } catch (\Exception $e) {
       $data = array('type' => 'Error', 'message' => $e->getMessage());
@@ -66,10 +67,10 @@ class UserRoutes{
   }
 
   public function update($request, $response) {
-    $criteria = $request->getQueryParams();
+    $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
     $params = $request->getParsedBody();
     try {
-      $data = UserController::update($params, $criteria);
+      $data = UserController::update($params, $access_key);
       return $response->withJson($data)->withStatus($data['status']);
     } catch (\Exception $e) {
       $data = array('type' => 'Error', 'message' => $e->getMessage());

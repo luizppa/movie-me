@@ -1,0 +1,15 @@
+<div class="bar">
+  <div class="user" align="center">
+      <img class="avatar" src="https://abrilexame.files.wordpress.com/2016/09/size_960_16_9_han_solo.jpg?quality=70&strip=info&w=920" alt="">
+      <br>
+      <span class="name">{{ user.name }}</span>
+  </div>
+  <hr>
+  <div class="options">
+    <span class="item"><i class="material-icons">person_outline</i>Profile</span>
+    <span class="item"><i class="material-icons">star_border</i>Favorites</span>
+    <span class="item"><i class="material-icons">add_to_queue</i>Watch Next</span>
+    <span class="item"><i class="material-icons">done_outline</i>Watched</span>
+    <span class="item" (click)="logout()"><i class="material-icons">arrow_back</i>Logout</span>
+  </div>
+</div>
