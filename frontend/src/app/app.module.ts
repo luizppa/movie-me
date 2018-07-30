@@ -11,12 +11,13 @@ import { HomeComponent } from './home/home.component'
 import { NavbarComponent } from './home/navbar/navbar.component'
 import { InitialComponent } from './home/initial/initial.component'
 import { PopularCarouselComponent } from './shared/components/popular-carousel/popular-carousel.component'
+import { LatestCarouselComponent } from './shared/components/latest-carousel/latest-carousel.component';
 import { MovieThumbComponent } from './shared/components/movie-thumb/movie-thumb.component'
+import { MovieComponent } from './home/movie/movie.component'
 
 import { UserService } from './shared/services/user.service'
-import { MovieService } from './shared/services/movie.service';
+import { MovieService } from './shared/services/movie.service'
 import { TopRatedCarouselComponent } from './shared/components/top-rated-carousel/top-rated-carousel.component';
-import { LatestCarouselComponent } from './shared/components/latest-carousel/latest-carousel.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LatestCarouselComponent } from './shared/components/latest-carousel/lat
     PopularCarouselComponent,
     MovieThumbComponent,
     TopRatedCarouselComponent,
-    LatestCarouselComponent
+    LatestCarouselComponent,
+    MovieComponent
   ],
   imports: [
     ReactiveFormsModule,

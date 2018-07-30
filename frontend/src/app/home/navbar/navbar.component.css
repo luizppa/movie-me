@@ -21,6 +21,7 @@ hr{
   font-size: 15px;
 }
 .item{
+  outline: none;
   cursor: pointer;
   display: block;
   margin: 10px 0px;

@@ -1,0 +1,23 @@
+<div *ngIf="movie">
+  <div class="jumbotron jumbotron-fluid" [ngStyle]="{'background-image': 'url(' + background + ')'}">
+    <div class="container">
+      <h1 class="display-4">{{ movie.title }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 rating" align="center">
+      <span>Rating</span>
+      <hr>
+      <span class="vote-average">{{ movie.vote_average }}</span>
+      <br>
+    </div>
+    <div class="col-md-10 overview">
+      <span>Overview</span>
+      <hr>
+      <p>{{ movie.overview }}</p>
+      <span class="badge badge-pill badge-dark genre" *ngFor="let genre of movie.genres">{{ genre.name }}</span>
+    </div>
+    <hr>
+  </div>
+  <div class="row"></div>
+</div>

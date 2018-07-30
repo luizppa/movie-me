@@ -4,12 +4,12 @@
 <hr>
 <div class="carousel row" *ngIf="movies">
   <div class="col-1 scroll-button unselectable" align="center" (click)="scroll_left()">
-    <i class="material-icons unselectable">keyboard_arrow_left</i>
+    <i class="material-icons unselectable">arrow_back_ios</i>
   </div>
   <div class="col-2 poster-container" *ngFor="let movie of movies.slice(start, end)">
     <app-movie-thumb [movie]="movie"></app-movie-thumb>
   </div>
   <div class="col-1 scroll-button" align="center" (click)="scroll_right()">
-    <i class="material-icons unselectable">keyboard_arrow_right</i>
+    <i class="material-icons unselectable">arrow_forward_ios</i>
   </div>
 </div>

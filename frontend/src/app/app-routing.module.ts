@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component'
 import { SignupComponent } from './signup/signup.component'
 import { HomeComponent } from './home/home.component'
 import { InitialComponent } from './home/initial/initial.component'
+import { MovieComponent } from './home/movie/movie.component'
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: '', component: HomeComponent, children:
     [
-        {path: '', component: InitialComponent}
+        {path: '', component: InitialComponent},
+        {path: 'movie/:id', component: MovieComponent}
     ]
   }
 ];

@@ -1,0 +1,32 @@
+.jumbotron{
+  color: white;
+  margin: 0px -15px;
+  padding: 0px;
+  height: 60vh;
+  background-size: cover;
+}
+.container{
+  text-align: center;
+  padding: 10vh;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0), rgb(240, 240, 240));
+}
+.overview{
+  padding: 50px;
+  font-size: 22px;
+}
+.rating{
+  padding: 50px;
+  font-size: 22px;
+}
+.details{
+  padding: 0px 50px;
+  font-size: 18px;
+}
+.vote-average{
+  font-size: 52px;
+}
+.genre{
+  margin-right: 10px;
+}
