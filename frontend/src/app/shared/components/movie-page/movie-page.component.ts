@@ -59,7 +59,7 @@ export class MoviePageComponent implements OnInit {
   }
 
   public go_to(page: number){
-    this.router.navigate([this.page_name, page])
+    this.router.navigate([this.page_name, page], { queryParams: this.query_params})
   }
 
 }
