@@ -11,7 +11,6 @@ import { HomeComponent } from './home/home.component'
 import { NavbarComponent } from './home/navbar/navbar.component'
 import { InitialComponent } from './home/initial/initial.component'
 import { PopularCarouselComponent } from './shared/components/popular-carousel/popular-carousel.component'
-import { LatestCarouselComponent } from './shared/components/latest-carousel/latest-carousel.component'
 import { MovieThumbComponent } from './shared/components/movie-thumb/movie-thumb.component'
 import { MovieComponent } from './home/movie/movie.component'
 import { TopRatedCarouselComponent } from './shared/components/top-rated-carousel/top-rated-carousel.component'
@@ -21,6 +20,7 @@ import { MovieListItemComponent } from './shared/components/movie-list/movie-lis
 import { MoviePageComponent } from './shared/components/movie-page/movie-page.component'
 import { PopularComponent } from './home/popular/popular.component'
 import { TopRatedComponent } from './home/top-rated/top-rated.component'
+import { MovieSearchComponent } from './home/movie-search/movie-search.component'
 
 import { UserService } from './shared/services/user.service'
 import { MovieService } from './shared/services/movie.service'
@@ -36,14 +36,14 @@ import { MovieService } from './shared/services/movie.service'
     PopularCarouselComponent,
     MovieThumbComponent,
     TopRatedCarouselComponent,
-    LatestCarouselComponent,
     MovieComponent,
     CarouselComponent,
     MovieListComponent,
     MovieListItemComponent,
     MoviePageComponent,
     PopularComponent,
-    TopRatedComponent
+    TopRatedComponent,
+    MovieSearchComponent
   ],
   imports: [
     ReactiveFormsModule,

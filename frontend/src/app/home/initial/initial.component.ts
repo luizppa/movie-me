@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-initial',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InitialComponent implements OnInit {
 
-  constructor() { }
+  public query: string
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  public onKeydown(event){
+    if (event.key === "Enter") {
+      this.search()
+    }
+  }
+
+  public search(){
+    if(this.query.length){
+      this.router.navigate(['search', '1'], { queryParams: {search: this.query}})
+    }
   }
 
 }

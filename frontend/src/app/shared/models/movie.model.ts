@@ -54,9 +54,18 @@ export class Movie {
   }
 
   public static from_params(movie_data, size){
-    let images = {
-      backdrop: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.backdrop_path,
-      poster: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.poster_path
+    let images
+    if(movie_data.backdrop_path && movie_data.poster_path){
+      images = {
+        backdrop: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.backdrop_path,
+        poster: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.poster_path
+      }
+    }
+    else {
+      images = {
+        backdrop: null,
+        poster: null
+      }
     }
     let collection
     if(movie_data.belongs_to_collection){
@@ -89,9 +98,18 @@ export class Movie {
   }
 
   public static from_info(movie_data, size){
-    let images = {
-      backdrop: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.backdrop_path,
-      poster: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.poster_path
+    let images
+    if(movie_data.backdrop_path && movie_data.poster_path){
+      images = {
+        backdrop: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.backdrop_path,
+        poster: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.poster_path
+      }
+    }
+    else {
+      images = {
+        backdrop: null,
+        poster: null
+      }
     }
     let movie: Movie = Movie.basic_constructor(
       movie_data.id,

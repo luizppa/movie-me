@@ -1,11 +1,17 @@
-<div class="row">
+<div class="row item" *ngIf="movie.images.poster">
   <div class="col-2 poster-container">
       <app-movie-thumb [movie]="movie"></app-movie-thumb>
   </div>
-  <div class="col-10">
+  <div class="col-6 col-sm-8">
     <h4><span class="pointer" [routerLink]="'/movie/'+movie.id">{{ movie.title }}</span></h4>
     <span class="muted">{{ format_date(movie.release_date) }}</span>
     <p class="overview">{{ movie.overview }}</p>
   </div>
+  <div class="col-4 col-sm-2 rating" align="center">
+    <span>Rating</span>
+    <br>
+    <span class="vote-average">{{ movie.vote_average }}</span>
+    <br>
+  </div>
 </div>
-<hr>
+<hr *ngIf="movie.images.poster">

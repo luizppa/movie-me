@@ -1,3 +1,16 @@
+.item{
+  max-height: 230px;
+}
 .overview{
   font-size: 20px;
+  margin-top: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rating{
+  font-size: 22px;
+}
+.vote-average{
+  font-size: 52px;
 }

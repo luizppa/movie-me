@@ -8,6 +8,7 @@ import { InitialComponent } from './home/initial/initial.component'
 import { MovieComponent } from './home/movie/movie.component'
 import { PopularComponent } from './home/popular/popular.component'
 import { TopRatedComponent } from './home/top-rated/top-rated.component'
+import { MovieSearchComponent } from './home/movie-search/movie-search.component'
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
         { path: '', component: InitialComponent},
         { path: 'movie/:id', component: MovieComponent},
         { path: 'popular/:page', component: PopularComponent},
-        { path: 'top-rated/:page', component: TopRatedComponent}
+        { path: 'top-rated/:page', component: TopRatedComponent},
+        { path: 'search/:page', component: MovieSearchComponent}
     ]
   }
 ];

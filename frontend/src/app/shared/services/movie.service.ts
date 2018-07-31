@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
+import { ActivatedRoute } from '@angular/router'
 
 import { Movie } from '../models/movie.model'
 import { environment } from '../../../environments/environment'
@@ -7,7 +8,7 @@ import { environment } from '../../../environments/environment'
 @Injectable()
 export class MovieService {
 
-  constructor(private http: Http){}
+  constructor(private http: Http, private activatedRoute: ActivatedRoute){}
 
   public get(id: number, callback, callbackErr, size: string ='original'){
     this.http.get(environment.tmdb_endpoint+'movie/'+id+'?api_key='+environment.api_key+'&language='+environment.language).subscribe(
@@ -73,15 +74,16 @@ export class MovieService {
     )
   }
 
-  public latest(callback, callbackErr, size: string ='original'){
-    this.http.get(environment.tmdb_endpoint+'movie/latest?api_key='+environment.api_key+'&language='+environment.language).subscribe(
+  public search(page: number = 1, callback, callbackErr, size: string ='original'){
+    let query = this.activatedRoute.snapshot.queryParams['search']
+    this.http.get(environment.tmdb_endpoint+'search/movie?api_key='+environment.api_key+'&language='+environment.language+'&page='+page+'&query='+query).subscribe(
       success => {
-        let latest = success.json()
-        // let movies_data: any[] = latest.results
+        let matched = success.json()
+        let movies_data: any[] = matched.results
         let movies: Movie[] = []
-        // movies = movies_data.map((movie_data) => {
-        //   return Movie.from_info(movie_data, size)
-        // })
+        movies = movies_data.map((movie_data) => {
+          return Movie.from_info(movie_data, size)
+        })
         callback(movies)
       },
       error => {

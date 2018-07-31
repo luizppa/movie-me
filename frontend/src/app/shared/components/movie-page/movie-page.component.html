@@ -1,15 +1,13 @@
 <hr id="start">
 <app-movie-list [movies]="movies"></app-movie-list>
-<div class="row">
+<div class="row" *ngIf="movies">
   <div class="col-12 navigation" align="center">
     <i class="material-icons pointer unselectable" (click)="navigate(false)">arrow_left</i>
-    <!-- <span class="pointer" (click)="navigate(false)"><b> < </b></span> -->
     <span class="pointer" *ngIf="+page_index > 2" (click)="go_to(+page_index-2)">... {{ +page_index-2 }} </span>
     <span class="pointer" *ngIf="+page_index > 1" (click)="go_to(+page_index-1)">{{ +page_index-1 }} </span>
     <span class="current">{{ page_index }} </span>
-    <span class="pointer" *ngIf="+page_index < 1000" (click)="go_to(+page_index+1)">{{ +page_index+1 }} </span>
-    <span class="pointer" *ngIf="+page_index < 999" (click)="go_to(+page_index+2)">{{ +page_index+2 }} ...</span>
+    <span class="pointer" *ngIf="+page_index < 1000 && movies.length == 20" (click)="go_to(+page_index+1)">{{ +page_index+1 }} </span>
+    <span class="pointer" *ngIf="+page_index < 999 && movies.length == 20" (click)="go_to(+page_index+2)">{{ +page_index+2 }} ...</span>
     <i class="material-icons pointer unselectable" (click)="navigate(true)">arrow_right</i>
-    <!-- <span class="pointer" (click)="navigate(true)"><b> > </b></span> -->
   </div>
 </div>
