@@ -58,14 +58,18 @@ export class Movie {
       backdrop: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.backdrop_path,
       poster: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.poster_path
     }
-    let collection = {
-      id: movie_data.belongs_to_collection.id,
-      name: movie_data.belongs_to_collection.name,
-      images: {
-        backdrop: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.belongs_to_collection.backdrop_path,
-        poster: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.belongs_to_collection.poster_path
+    let collection
+    if(movie_data.belongs_to_collection){
+      collection = {
+        id: movie_data.belongs_to_collection.id,
+        name: movie_data.belongs_to_collection.name,
+        images: {
+          backdrop: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.belongs_to_collection.backdrop_path,
+          poster: 'http://image.tmdb.org/t/p/'+size+'/'+movie_data.belongs_to_collection.poster_path
+        }
       }
     }
+    else collection = null
     let movie: Movie = new Movie(
       movie_data.id,
       images,

@@ -18,6 +18,7 @@ import { MovieComponent } from './home/movie/movie.component'
 import { UserService } from './shared/services/user.service'
 import { MovieService } from './shared/services/movie.service'
 import { TopRatedCarouselComponent } from './shared/components/top-rated-carousel/top-rated-carousel.component';
+import { CarouselComponent } from './shared/components/carousel/carousel.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TopRatedCarouselComponent } from './shared/components/top-rated-carouse
     MovieThumbComponent,
     TopRatedCarouselComponent,
     LatestCarouselComponent,
-    MovieComponent
+    MovieComponent,
+    CarouselComponent
   ],
   imports: [
     ReactiveFormsModule,

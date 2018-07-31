@@ -22,7 +22,6 @@ export class MovieComponent implements OnInit {
       movie => {
         this.movie = movie
         this.background = movie.images.backdrop
-        console.log(this.movie)
       },
       error => {
         console.log(error)
