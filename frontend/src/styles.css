@@ -30,6 +30,9 @@
 .link:hover{
   color: #F61100;
 }
+.muted{
+  color: rgb(120, 120, 120);
+}
 .carousel{
   margin-bottom: 60px;
 }

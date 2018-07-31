@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-2 poster-container">
+      <app-movie-thumb [movie]="movie"></app-movie-thumb>
+  </div>
+  <div class="col-10">
+    <h4><span class="pointer" [routerLink]="'/movie/'+movie.id">{{ movie.title }}</span></h4>
+    <span class="muted">{{ format_date(movie.release_date) }}</span>
+    <p class="overview">{{ movie.overview }}</p>
+  </div>
+</div>
+<hr>

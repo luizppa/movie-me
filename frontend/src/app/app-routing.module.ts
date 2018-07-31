@@ -6,15 +6,18 @@ import { SignupComponent } from './signup/signup.component'
 import { HomeComponent } from './home/home.component'
 import { InitialComponent } from './home/initial/initial.component'
 import { MovieComponent } from './home/movie/movie.component'
-
+import { PopularComponent } from './home/popular/popular.component'
+import { TopRatedComponent } from './home/top-rated/top-rated.component'
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: '', component: HomeComponent, children:
     [
-        {path: '', component: InitialComponent},
-        {path: 'movie/:id', component: MovieComponent}
+        { path: '', component: InitialComponent},
+        { path: 'movie/:id', component: MovieComponent},
+        { path: 'popular/:page', component: PopularComponent},
+        { path: 'top-rated/:page', component: TopRatedComponent}
     ]
   }
 ];

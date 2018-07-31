@@ -19,9 +19,9 @@
     </div>
     <hr>
   </div>
-  <div class="similar" *ngIf="similar_movies">
+  <div class="similar" *ngIf="similar_movies.length">
     <div class="col-12">
-      <span class="section-title">More like {{ movie.title }}</span><span class="link">see all</span>
+      <span class="section-title">More like {{ movie.title }}</span>
     </div>
     <hr>
     <app-carousel [movies]="similar_movies"></app-carousel>

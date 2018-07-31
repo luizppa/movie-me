@@ -11,14 +11,19 @@ import { HomeComponent } from './home/home.component'
 import { NavbarComponent } from './home/navbar/navbar.component'
 import { InitialComponent } from './home/initial/initial.component'
 import { PopularCarouselComponent } from './shared/components/popular-carousel/popular-carousel.component'
-import { LatestCarouselComponent } from './shared/components/latest-carousel/latest-carousel.component';
+import { LatestCarouselComponent } from './shared/components/latest-carousel/latest-carousel.component'
 import { MovieThumbComponent } from './shared/components/movie-thumb/movie-thumb.component'
 import { MovieComponent } from './home/movie/movie.component'
+import { TopRatedCarouselComponent } from './shared/components/top-rated-carousel/top-rated-carousel.component'
+import { CarouselComponent } from './shared/components/carousel/carousel.component'
+import { MovieListComponent } from './shared/components/movie-list/movie-list.component'
+import { MovieListItemComponent } from './shared/components/movie-list/movie-list-item/movie-list-item.component'
+import { MoviePageComponent } from './shared/components/movie-page/movie-page.component'
+import { PopularComponent } from './home/popular/popular.component'
+import { TopRatedComponent } from './home/top-rated/top-rated.component'
 
 import { UserService } from './shared/services/user.service'
 import { MovieService } from './shared/services/movie.service'
-import { TopRatedCarouselComponent } from './shared/components/top-rated-carousel/top-rated-carousel.component';
-import { CarouselComponent } from './shared/components/carousel/carousel.component'
 
 @NgModule({
   declarations: [
@@ -33,7 +38,12 @@ import { CarouselComponent } from './shared/components/carousel/carousel.compone
     TopRatedCarouselComponent,
     LatestCarouselComponent,
     MovieComponent,
-    CarouselComponent
+    CarouselComponent,
+    MovieListComponent,
+    MovieListItemComponent,
+    MoviePageComponent,
+    PopularComponent,
+    TopRatedComponent
   ],
   imports: [
     ReactiveFormsModule,
