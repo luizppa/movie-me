@@ -56,6 +56,23 @@ export class MovieService {
     )
   }
 
+  public similar(id: number, page: number = 1, callback, callbackErr, size: string ='original'){
+    this.http.get(environment.tmdb_endpoint+'movie/'+id+'/similar?api_key='+environment.api_key+'&language='+environment.language+'&page='+page).subscribe(
+      success => {
+        let similar = success.json()
+        let movies_data: any[] = similar.results
+        let movies: Movie[] = []
+        movies = movies_data.map((movie_data) => {
+          return Movie.from_info(movie_data, size)
+        })
+        callback(movies)
+      },
+      error => {
+        callbackErr(error.json())
+      }
+    )
+  }
+
   public latest(callback, callbackErr, size: string ='original'){
     this.http.get(environment.tmdb_endpoint+'movie/latest?api_key='+environment.api_key+'&language='+environment.language).subscribe(
       success => {

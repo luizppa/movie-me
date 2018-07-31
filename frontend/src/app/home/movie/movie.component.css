@@ -8,8 +8,8 @@
 .container{
   text-align: center;
   padding: 10vh;
-  height: 100%;
-  width: 100%;
+  height: 100% !important;
+  margin: 0 !important;
   background-image: linear-gradient(rgba(20, 20, 20, 1), rgba(20, 20, 20, 0), rgb(240, 240, 240));
 }
 .overview{
@@ -29,4 +29,10 @@
 }
 .genre{
   margin-right: 10px;
+}
+.similar{
+  
+}
+.section-title{
+  font-size: 32px;
 }
