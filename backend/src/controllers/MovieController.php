@@ -34,6 +34,16 @@ class MovieController {
     return array('type' => 'Found', 'status' => 200, 'message' => 'Movies found', 'movies' => $movies);
   }
 
+  public static function unfavorite($movie_id, $user_id){
+    $success = Movie::unfavorite($user_id, $movie_id);
+    if($success){
+      return array('type' => 'Removed', 'status' => 200, 'message' => 'Movie successfuly removed');
+    }
+    else{
+      throw new \Exception("Could not remove movie");
+    }
+  }
+
   public static function watch_later($params, $user_id){
     $movie = Movie::find($params['id']);
     if(!$movie){
@@ -51,6 +61,16 @@ class MovieController {
   public static function get_watch_later ($user_id){
     $movies = Movie::get_watch_later($user_id);
     return array('type' => 'Found', 'status' => 200, 'message' => 'Movies found', 'movies' => $movies);
+  }
+
+  public static function remove_watch_later($movie_id, $user_id){
+    $success = Movie::remove_watch_later($user_id, $movie_id);
+    if($success){
+      return array('type' => 'Removed', 'status' => 200, 'message' => 'Movie successfuly removed');
+    }
+    else{
+      throw new \Exception("Could not remove movie");
+    }
   }
 
   public static function watched($params, $user_id){
@@ -72,6 +92,15 @@ class MovieController {
     return array('type' => 'Found', 'status' => 200, 'message' => 'Movies found', 'movies' => $movies);
   }
 
+  public static function remove_watched($movie_id, $user_id){
+    $success = Movie::remove_watched($user_id, $movie_id);
+    if($success){
+      return array('type' => 'Removed', 'status' => 200, 'message' => 'Movie successfuly removed');
+    }
+    else{
+      throw new \Exception("Could not remove movie");
+    }
+  }
 
 }
 

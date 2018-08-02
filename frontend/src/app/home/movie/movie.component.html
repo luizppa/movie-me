@@ -13,13 +13,13 @@
         <div class="col-6">
           <div class="row">
             <div class="col-4" align="center">
-              <span class="option unselectable" [class.option_active]="watch_later">Watch Next</span>
+              <span class="option unselectable" [class.option_active]="watch_later" (click)="toggle_watch_later()">Watch Next</span>
             </div>
             <div class="col-4" align="center">
-              <span class="option unselectable" [class.option_active]="favorite" (click)="make_favorite()">Favorite</span>
+              <span class="option unselectable" [class.option_active]="favorite" (click)="toggle_favorite()">Favorite</span>
             </div>
             <div class="col-4" align="center">
-              <span class="option unselectable" [class.option_active]="watched">Watched</span>
+              <span class="option unselectable" [class.option_active]="watched" (click)="toggle_watched()">Watched</span>
             </div>
           </div>
         </div>

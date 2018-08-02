@@ -126,6 +126,17 @@ class Movie extends MovieMeBase{
     return $movies;
   }
 
+  public static function unfavorite($user_id, $movie_id){
+    $connection = parent::get_connection();
+    $query = 'DELETE FROM favorites
+              WHERE user_id = '.$user_id.' AND movie_id = '.$movie_id;
+
+    $response = mysqli_query($connection, $query);
+    mysqli_close($connection);
+    if($response) return true;
+    else return false;
+  }
+
   public static function to_watch_later($user_id, $movie_id){
     $connection = parent::get_connection();
     $query = 'SELECT * FROM watch_later
@@ -168,6 +179,17 @@ class Movie extends MovieMeBase{
     return $movies;
   }
 
+  public static function remove_watch_later($user_id, $movie_id){
+    $connection = parent::get_connection();
+    $query = 'DELETE FROM watch_later
+              WHERE user_id = '.$user_id.' AND movie_id = '.$movie_id;
+
+    $response = mysqli_query($connection, $query);
+    mysqli_close($connection);
+    if($response) return true;
+    else return false;
+  }
+
   public static function already_watched($user_id, $movie_id){
     $connection = parent::get_connection();
     $query = 'SELECT * FROM watched
@@ -208,6 +230,17 @@ class Movie extends MovieMeBase{
       array_push($movies, Movie::find($row['movie_id']));
     }
     return $movies;
+  }
+
+  public static function remove_watched($user_id, $movie_id){
+    $connection = parent::get_connection();
+    $query = 'DELETE FROM watched
+              WHERE user_id = '.$user_id.' AND movie_id = '.$movie_id;
+
+    $response = mysqli_query($connection, $query);
+    mysqli_close($connection);
+    if($response) return true;
+    else return false;
   }
 }
 ?>

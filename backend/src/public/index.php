@@ -45,6 +45,9 @@ $app->group(movie, function () use ($app){
   $app->get('/watch_later', '\App\Routes\MovieRoutes:get_watch_later');
   $app->get('/watched', '\App\Routes\MovieRoutes:get_watched');
   $app->get('/status/{id}', '\App\Routes\MovieRoutes:status');
+  $app->delete('/unfavorite/{id}', '\App\Routes\MovieRoutes:unfavorite');
+  $app->delete('/watch_later/{id}', '\App\Routes\MovieRoutes:remove_watch_later');
+  $app->delete('/watched/{id}', '\App\Routes\MovieRoutes:remove_watched');
 });
 
 $app->run();

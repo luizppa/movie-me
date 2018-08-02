@@ -74,6 +74,27 @@ class MovieRoutes{
     }
   }
 
+  public function unfavorite($request, $response, $args){
+    $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
+    $body = $request->getParsedBody();
+    $session = Session::find($access_key);
+    if($session){
+      $user = $session->user;
+      try{
+        $data = MovieController::unfavorite($args['id'], $user->id);
+        return $response->withJson($data)->withStatus($data['status']);
+      }
+      catch (\Exception $e) {
+        $data = array('type' => 'Error', 'message' => $e->getMessage());
+        return $response->withJson($data)->withStatus(400);
+      }
+    }
+    else {
+      $data = array('type' => 'Error', 'message' => 'Auth required');
+      return $response->withJson($data)->withStatus(403);
+    }
+  }
+
   public function watch_later($request, $response){
     $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
     $body = $request->getParsedBody();
@@ -115,6 +136,27 @@ class MovieRoutes{
     }
   }
 
+  public function remove_watch_later($request, $response, $args){
+    $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
+    $body = $request->getParsedBody();
+    $session = Session::find($access_key);
+    if($session){
+      $user = $session->user;
+      try{
+        $data = MovieController::remove_watch_later($args['id'], $user->id);
+        return $response->withJson($data)->withStatus($data['status']);
+      }
+      catch (\Exception $e) {
+        $data = array('type' => 'Error', 'message' => $e->getMessage());
+        return $response->withJson($data)->withStatus(400);
+      }
+    }
+    else {
+      $data = array('type' => 'Error', 'message' => 'Auth required');
+      return $response->withJson($data)->withStatus(403);
+    }
+  }
+
   public function watched($request, $response){
     $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
     $body = $request->getParsedBody();
@@ -143,6 +185,27 @@ class MovieRoutes{
       $user = $session->user;
       try{
         $data = MovieController::get_watched($user->id);
+        return $response->withJson($data)->withStatus($data['status']);
+      }
+      catch (\Exception $e) {
+        $data = array('type' => 'Error', 'message' => $e->getMessage());
+        return $response->withJson($data)->withStatus(400);
+      }
+    }
+    else {
+      $data = array('type' => 'Error', 'message' => 'Auth required');
+      return $response->withJson($data)->withStatus(403);
+    }
+  }
+
+  public function remove_watched($request, $response, $args){
+    $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
+    $body = $request->getParsedBody();
+    $session = Session::find($access_key);
+    if($session){
+      $user = $session->user;
+      try{
+        $data = MovieController::remove_watched($args['id'], $user->id);
         return $response->withJson($data)->withStatus($data['status']);
       }
       catch (\Exception $e) {

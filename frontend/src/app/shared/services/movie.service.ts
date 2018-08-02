@@ -119,6 +119,112 @@ export class MovieService {
     }
   }
 
+  public unfavorite(id: number, callback, callbackErr){
+    let session = this.userService.get_session()
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.delete(environment.api_endpoint+'movie/unfavorite/'+id, options).subscribe(
+        success => {
+          callback(success.json())
+        },
+        error => {
+          callbackErr(error.json())
+        }
+      )
+    }
+  }
+
+  public watch_later(movie: Movie, callback, callbackErr){
+    let body = {
+      id: movie.id,
+      poster: movie.images.poster,
+      title: movie.title,
+      overview: movie.overview,
+      release_date: movie.release_date,
+      vote_average: movie.vote_average
+    }
+    let session = this.userService.get_session()
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.post(environment.api_endpoint+'movie/watch_later', body, options).subscribe(
+        success => {
+          callback(success.json())
+        },
+        error => {
+          callbackErr(error.json())
+        }
+      )
+    }
+  }
+
+  public undo_watch_later(id: number, callback, callbackErr){
+    let session = this.userService.get_session()
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.delete(environment.api_endpoint+'movie/watch_later/'+id, options).subscribe(
+        success => {
+          callback(success.json())
+        },
+        error => {
+          callbackErr(error.json())
+        }
+      )
+    }
+  }
+
+  public watched(movie: Movie, callback, callbackErr){
+    let body = {
+      id: movie.id,
+      poster: movie.images.poster,
+      title: movie.title,
+      overview: movie.overview,
+      release_date: movie.release_date,
+      vote_average: movie.vote_average
+    }
+    let session = this.userService.get_session()
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.post(environment.api_endpoint+'movie/watched', body, options).subscribe(
+        success => {
+          callback(success.json())
+        },
+        error => {
+          callbackErr(error.json())
+        }
+      )
+    }
+  }
+
+  public undo_watched(id: number, callback, callbackErr){
+    let session = this.userService.get_session()
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.delete(environment.api_endpoint+'movie/watched/'+id, options).subscribe(
+        success => {
+          callback(success.json())
+        },
+        error => {
+          callbackErr(error.json())
+        }
+      )
+    }
+  }
+
   public status(id: number, callback, callbackErr){
     let session = this.userService.get_session()
     if(session){

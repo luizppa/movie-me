@@ -64,15 +64,73 @@ export class MovieComponent implements OnInit {
     return date.split('-').reverse().join('/')
   }
 
-  public make_favorite(){
-    this.movieService.favorite(this.movie,
-      success => {
-        this.favorite = true
-      },
-      error => {
-        console.log(error)
-      }
-    )
+  public toggle_favorite(){
+    if(this.favorite){
+      this.movieService.unfavorite(this.movie.id,
+        success => {
+          this.favorite = false
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    }
+    else {
+      this.movieService.favorite(this.movie,
+        success => {
+          this.favorite = true
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    }
+  }
+
+  public toggle_watch_later(){
+    if(this.watch_later){
+      this.movieService.undo_watch_later(this.movie.id,
+        success => {
+          this.watch_later = false
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    }
+    else {
+      this.movieService.watch_later(this.movie,
+        success => {
+          this.watch_later = true
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    }
+  }
+
+  public toggle_watched(){
+    if(this.watched){
+      this.movieService.undo_watched(this.movie.id,
+        success => {
+          this.watched = false
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    }
+    else {
+      this.movieService.watched(this.movie,
+        success => {
+          this.watched = true
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    }
   }
 
 }
