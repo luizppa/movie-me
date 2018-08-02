@@ -9,7 +9,7 @@ import { Movie } from '../../models/movie.model'
 })
 export class MovieListComponent implements OnInit {
 
-  @Input() movies: Movie[]
+  @Input() movies: any[]
 
   constructor() { }
 

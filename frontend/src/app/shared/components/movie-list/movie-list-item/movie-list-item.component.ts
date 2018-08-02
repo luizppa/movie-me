@@ -10,7 +10,7 @@ import { MovieService } from '../../../services/movie.service'
 })
 export class MovieListItemComponent implements OnInit {
 
-  @Input() movie: Movie
+  @Input() movie: any
 
   constructor(private movieService: MovieService){}
 

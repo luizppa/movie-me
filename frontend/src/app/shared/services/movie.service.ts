@@ -119,6 +119,24 @@ export class MovieService {
     }
   }
 
+  public get_favorites(callback, callbackErr){
+    let session = this.userService.get_session()
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.get(environment.api_endpoint+'movie/favorites', options).subscribe(
+        success => {
+          callback(success.json())
+        },
+        error => {
+          callbackErr(error.json())
+        }
+      )
+    }
+  }
+
   public unfavorite(id: number, callback, callbackErr){
     let session = this.userService.get_session()
     if(session){
@@ -163,6 +181,24 @@ export class MovieService {
     }
   }
 
+  public get_watch_later(callback, callbackErr){
+    let session = this.userService.get_session()
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.get(environment.api_endpoint+'movie/watch_later', options).subscribe(
+        success => {
+          callback(success.json())
+        },
+        error => {
+          callbackErr(error.json())
+        }
+      )
+    }
+  }
+
   public undo_watch_later(id: number, callback, callbackErr){
     let session = this.userService.get_session()
     if(session){
@@ -197,6 +233,24 @@ export class MovieService {
       let options = new RequestOptions({ headers });
 
       this.http.post(environment.api_endpoint+'movie/watched', body, options).subscribe(
+        success => {
+          callback(success.json())
+        },
+        error => {
+          callbackErr(error.json())
+        }
+      )
+    }
+  }
+
+  public get_watched(callback, callbackErr){
+    let session = this.userService.get_session()
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.get(environment.api_endpoint+'movie/watched', options).subscribe(
         success => {
           callback(success.json())
         },

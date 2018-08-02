@@ -21,6 +21,9 @@ import { MoviePageComponent } from './shared/components/movie-page/movie-page.co
 import { PopularComponent } from './home/popular/popular.component'
 import { TopRatedComponent } from './home/top-rated/top-rated.component'
 import { MovieSearchComponent } from './home/movie-search/movie-search.component'
+import { FavoritesComponent } from './home/favorites/favorites.component'
+import { WatchLaterComponent } from './home/watch-later/watch-later.component'
+import { WatchedComponent } from './home/watched/watched.component'
 
 import { UserService } from './shared/services/user.service'
 import { MovieService } from './shared/services/movie.service'
@@ -43,7 +46,10 @@ import { MovieService } from './shared/services/movie.service'
     MoviePageComponent,
     PopularComponent,
     TopRatedComponent,
-    MovieSearchComponent
+    MovieSearchComponent,
+    FavoritesComponent,
+    WatchLaterComponent,
+    WatchedComponent
   ],
   imports: [
     ReactiveFormsModule,
