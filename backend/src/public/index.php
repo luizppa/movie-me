@@ -44,6 +44,7 @@ $app->group(movie, function () use ($app){
   $app->get('/favorites', '\App\Routes\MovieRoutes:get_favorites');
   $app->get('/watch_later', '\App\Routes\MovieRoutes:get_watch_later');
   $app->get('/watched', '\App\Routes\MovieRoutes:get_watched');
+  $app->get('/status/{id}', '\App\Routes\MovieRoutes:status');
 });
 
 $app->run();

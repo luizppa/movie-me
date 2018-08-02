@@ -12,17 +12,48 @@
   margin: 0 !important;
   background-image: linear-gradient(rgba(20, 20, 20, 1), rgba(20, 20, 20, 0), rgb(240, 240, 240));
 }
+.details{
+  padding: 10px 50px 0 50px;
+  margin: 50px auto;
+}
+.option{
+  cursor: pointer;
+  display: inline-block;
+  padding: 7px 0 10px 0;
+  height: 45px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 4px;
+}
+.option:hover{
+  background-color: #c81105;
+  border: 1px solid #c81105;
+  color: white;
+}
+.option:active{
+  background-color: #bd1106;
+}
+.option_active{
+  background-color: #d11205;
+  border: 1px solid #c81105;
+  color: white;
+}
+.date{
+  font-size: 22px;
+}
 .overview{
-  padding: 50px;
+  padding-top: 20px;
   font-size: 22px;
 }
 .rating{
-  padding: 50px;
+  padding: 20px;
   font-size: 22px;
-}
-.details{
-  padding: 0px 50px;
-  font-size: 18px;
 }
 .vote-average{
   font-size: 52px;

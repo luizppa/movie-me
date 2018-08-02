@@ -12,6 +12,27 @@ class MovieRoutes{
 
   function __construct(){}
 
+  public function status($request, $response, $args){
+    $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
+    $session = Session::find($access_key);
+    if($session){
+      $user = $session->user;
+      try{
+        $movie_id = $args['id'];
+        $data = MovieController::status($user->id, $movie_id);
+        return $response->withJson($data)->withStatus($data['status']);
+      }
+      catch (\Exception $e) {
+        $data = array('type' => 'Error', 'message' => $e->getMessage());
+        return $response->withJson($data)->withStatus(400);
+      }
+    }
+    else {
+      $data = array('type' => 'Error', 'message' => 'Auth required');
+      return $response->withJson($data)->withStatus(403);
+    }
+  }
+
   public function make_favorite($request, $response){
     $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
     $body = $request->getParsedBody();

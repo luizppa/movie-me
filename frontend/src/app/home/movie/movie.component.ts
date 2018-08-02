@@ -14,6 +14,9 @@ export class MovieComponent implements OnInit {
   public movie: Movie = null
   public similar_movies: Movie[] = null
   public background: string = ''
+  public favorite: boolean
+  public watch_later: boolean
+  public watched: boolean
 
   constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService) { }
 
@@ -36,6 +39,16 @@ export class MovieComponent implements OnInit {
         console.log(error)
       }
     )
+    this.movieService.status(id,
+      status => {
+        this.favorite = status.favorite
+        this.watch_later = status.to_watch_later
+        this.watched = status.watched
+      },
+      error => {
+        console.log(error)
+      }
+    )
     this.movieService.similar(id, 1,
       movies => {
         this.similar_movies = movies
@@ -44,6 +57,21 @@ export class MovieComponent implements OnInit {
         console.log(error)
       },
       'w185'
+    )
+  }
+
+  public format_date(date: string): string{
+    return date.split('-').reverse().join('/')
+  }
+
+  public make_favorite(){
+    this.movieService.favorite(this.movie,
+      success => {
+        this.favorite = true
+      },
+      error => {
+        console.log(error)
+      }
     )
   }
 

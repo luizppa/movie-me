@@ -8,6 +8,13 @@ class MovieController {
 
   function __construct(){}
 
+  public static function status($user_id, $movie_id){
+    $favorite = Movie::is_favorite($user_id, $movie_id);
+    $to_watch_later = Movie::to_watch_later($user_id, $movie_id);
+    $watched = Movie::already_watched($user_id, $movie_id);
+    return array('type' => 'Found', 'status' => 200, 'favorite' => $favorite, 'to_watch_later' => $to_watch_later, 'watched' => $watched);
+  }
+
   public static function make_favorite($params, $user_id){
     $movie = Movie::find($params['id']);
     if(!$movie){

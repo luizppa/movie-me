@@ -4,7 +4,28 @@
       <h1 class="display-4">{{ movie.title }}</h1>
     </div>
   </div>
-  <div class="row">
+  <div class="row details">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-6 date">
+          <span class="muted">{{ format_date(movie.release_date) }}</span>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-4" align="center">
+              <span class="option unselectable" [class.option_active]="watch_later">Watch Next</span>
+            </div>
+            <div class="col-4" align="center">
+              <span class="option unselectable" [class.option_active]="favorite" (click)="make_favorite()">Favorite</span>
+            </div>
+            <div class="col-4" align="center">
+              <span class="option unselectable" [class.option_active]="watched">Watched</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
     <div class="col-md-2 rating" align="center">
       <span>Rating</span>
       <hr>
@@ -19,7 +40,7 @@
     </div>
     <hr>
   </div>
-  <div class="similar" *ngIf="similar_movies.length">
+  <div class="similar" *ngIf="similar_movies && similar_movies.length">
     <div class="col-12">
       <span class="section-title">More like {{ movie.title }}</span>
     </div>

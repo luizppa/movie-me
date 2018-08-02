@@ -114,7 +114,7 @@ class Movie extends MovieMeBase{
     $query = 'SELECT movie_id
               FROM favorites
               WHERE user_id = '.$id;
-              
+
     $response = mysqli_query($connection, $query);
     $rows = mysqli_fetch_all($response, MYSQLI_ASSOC);
     mysqli_free_result($response);
