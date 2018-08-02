@@ -14,6 +14,18 @@ CREATE TABLE users(
    PRIMARY KEY (id)
 );
 
+DROP TABLE IF EXISTS movies;
+
+CREATE TABLE movies(
+  id INT NOT NULL UNIQUE,
+  poster VARCHAR(255) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  overview TEXT NOT NULL,
+  release_date VARCHAR(16) NOT NULL,
+  vote_average DECIMAL(2,1) NOT NULL,
+  PRIMARY KEY (id)
+);
+
 DROP TABLE IF EXISTS sessions;
 
 CREATE TABLE sessions(
@@ -32,6 +44,7 @@ CREATE TABLE comments(
   likes INT NOT NULL DEFAULT 0,
   movie_id INT NOT NULL,
   user_id INT NOT NULL,
+  CONSTRAINT fk_comment_movie FOREIGN KEY (movie_id) REFERENCES movies(id),
   CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES users(id),
   PRIMARY KEY (id)
 );
@@ -42,6 +55,7 @@ CREATE TABLE favorites(
   id INT NOT NULL AUTO_INCREMENT,
   movie_id INT NOT NULL,
   user_id INT NOT NULL,
+  CONSTRAINT fk_favorite_movie FOREIGN KEY (movie_id) REFERENCES movies(id),
   CONSTRAINT fk_favorite_user FOREIGN KEY (user_id) REFERENCES users(id),
   PRIMARY KEY (id)
 );
@@ -52,6 +66,7 @@ CREATE TABLE watch_later(
   id INT NOT NULL AUTO_INCREMENT,
   movie_id INT NOT NULL,
   user_id INT NOT NULL,
+  CONSTRAINT fk_watch_later_movie FOREIGN KEY (movie_id) REFERENCES movies(id),
   CONSTRAINT fk_watch_later_user FOREIGN KEY (user_id) REFERENCES users(id),
   PRIMARY KEY (id)
 );
@@ -62,6 +77,7 @@ CREATE TABLE watched(
   id INT NOT NULL AUTO_INCREMENT,
   movie_id INT NOT NULL,
   user_id INT NOT NULL,
+  CONSTRAINT fk_watched_movie FOREIGN KEY (movie_id) REFERENCES movies(id),
   CONSTRAINT fk_watched_user FOREIGN KEY (user_id) REFERENCES users(id),
   PRIMARY KEY (id)
 );

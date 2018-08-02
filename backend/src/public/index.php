@@ -37,5 +37,14 @@ $app->group(user, function () use ($app) {
     $app->delete('/{id}', '\App\Routes\UserRoutes:delete');
 });
 
+$app->group(movie, function () use ($app){
+  $app->post('/favorite', '\App\Routes\MovieRoutes:make_favorite');
+  $app->post('/watch_later', '\App\Routes\MovieRoutes:watch_later');
+  $app->post('/watched', '\App\Routes\MovieRoutes:watched');
+  $app->get('/favorites', '\App\Routes\MovieRoutes:get_favorites');
+  $app->get('/watch_later', '\App\Routes\MovieRoutes:get_watch_later');
+  $app->get('/watched', '\App\Routes\MovieRoutes:get_watched');
+});
+
 $app->run();
 ?>
