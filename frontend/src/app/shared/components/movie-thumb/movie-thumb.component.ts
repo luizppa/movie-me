@@ -8,7 +8,7 @@ import { Movie } from '../../models/movie.model'
 })
 export class MovieThumbComponent implements OnInit {
 
-  @Input() movie: Movie
+  @Input() movie: any
 
   constructor() { }
 

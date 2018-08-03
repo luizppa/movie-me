@@ -24,6 +24,7 @@ import { MovieSearchComponent } from './home/movie-search/movie-search.component
 import { FavoritesComponent } from './home/favorites/favorites.component'
 import { WatchLaterComponent } from './home/watch-later/watch-later.component'
 import { WatchedComponent } from './home/watched/watched.component'
+import { ProfileComponent } from './home/profile/profile.component'
 
 import { UserService } from './shared/services/user.service'
 import { MovieService } from './shared/services/movie.service'
@@ -49,7 +50,8 @@ import { MovieService } from './shared/services/movie.service'
     MovieSearchComponent,
     FavoritesComponent,
     WatchLaterComponent,
-    WatchedComponent
+    WatchedComponent,
+    ProfileComponent
   ],
   imports: [
     ReactiveFormsModule,

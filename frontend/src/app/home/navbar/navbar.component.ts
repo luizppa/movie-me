@@ -10,12 +10,14 @@ import { User } from '../../shared/models/user.model'
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  public session: any
   public user: User
 
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
-    this.user = this.userService.get_session().user
+    this.session = this.userService.get_session()
+    this.user = this.session.user
   }
 
   public logout(){

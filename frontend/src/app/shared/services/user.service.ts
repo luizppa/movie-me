@@ -52,6 +52,25 @@ export class UserService {
     }
   }
 
+  public get_info(callback, callbackErr){
+    let session = this.get_session()
+
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.get(environment.api_endpoint+'user/me', options).subscribe(
+        success => {
+          callback(success.json())
+        },
+        error => {
+          callbackErr(error.json())
+        }
+      )
+    }
+  }
+
   public get_session(){
     return JSON.parse(localStorage.getItem('session'))
   }

@@ -9,7 +9,8 @@ import { Movie } from '../../models/movie.model'
 })
 export class CarouselComponent implements OnInit {
 
-  @Input() movies: Movie[]
+  @Input() movies: any[]
+  @Input() list_size: number = 20
   public start: number = 0
   public end: number = 5
 
@@ -26,7 +27,7 @@ export class CarouselComponent implements OnInit {
   }
 
   public scroll_right(){
-    if(this.start < 15 && this.end < 20){
+    if(this.start < (this.list_size-5) && this.end < this.list_size){
       this.start = this.start + 1
       this.end = this.end + 1
     }

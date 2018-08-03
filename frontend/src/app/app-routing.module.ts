@@ -12,6 +12,7 @@ import { MovieSearchComponent } from './home/movie-search/movie-search.component
 import { FavoritesComponent } from './home/favorites/favorites.component'
 import { WatchLaterComponent } from './home/watch-later/watch-later.component'
 import { WatchedComponent } from './home/watched/watched.component'
+import { ProfileComponent } from './home/profile/profile.component'
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, children:
     [
         { path: '', component: InitialComponent},
+        { path: 'profile', component: ProfileComponent},
         { path: 'movie/:id', component: MovieComponent},
         { path: 'favorites', component: FavoritesComponent},
         { path: 'watch-next', component: WatchLaterComponent},
