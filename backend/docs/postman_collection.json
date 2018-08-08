@@ -1,0 +1,552 @@
+{
+	"info": {
+		"_postman_id": "035ee1df-cd47-4a34-867c-05061f0ab8b8",
+		"name": "MovieMe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"description": "",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Rita\",\n  \"description\": \"\",\n  \"age\": 17,\n  \"email\": \"ritarezborges@gmail.com\",\n  \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/user/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"luizphilippep@gmail.com\",\n  \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "OTQ5ZGM2YzQyZDhiZjQ2MTFjNmViMDZj"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/user/me",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/user/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/user/list?limit=10",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"list"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "OTQ5ZGM2YzQyZDhiZjQ2MTFjNmViMDZj"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"May the force be with you\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/user/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "M2U1OGE1NTEwYTkx"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/user/logout/M2U1OGE1NTEwYTkx",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"logout",
+								"M2U1OGE1NTEwYTkx"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "movie",
+			"description": "",
+			"item": [
+				{
+					"name": "Make Favorite",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "NmE0NGJhYWM3Y2VkOTlkMjA0OTJjYzg3"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 299536,\n\t\"poster\": \"/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg\",\n\t\"title\": \"Avengers: Infinity War\",\n\t\"overview\": \"As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.\",\n\t\"release_date\": \"2018-04-25\",\n\t\"vote_average\": 8.6\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/movie/favorite",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								"favorite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Watch Later",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "NmE0NGJhYWM3Y2VkOTlkMjA0OTJjYzg3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 299536,\n\t\"poster\": \"/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg\",\n\t\"title\": \"Avengers: Infinity War\",\n\t\"overview\": \"As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.\",\n\t\"release_date\": \"2018-04-25\",\n\t\"vote_average\": 8.6\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/movie/watch_later",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								"watch_later"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Watched",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "NmE0NGJhYWM3Y2VkOTlkMjA0OTJjYzg3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 299536,\n\t\"poster\": \"/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg\",\n\t\"title\": \"Avengers: Infinity War\",\n\t\"overview\": \"As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.\",\n\t\"release_date\": \"2018-04-25\",\n\t\"vote_average\": 8.6\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/movie/watched",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								"watched"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "YmZjZTU1NzVlY2E4MjA1NjM4YTRmYmM0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"movie_id\": 299536,\n\t\"text\": \"Mto top\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/movie/comment",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Favorites",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "NmE0NGJhYWM3Y2VkOTlkMjA0OTJjYzg3"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/movie/favorites",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Watch Later",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "NmE0NGJhYWM3Y2VkOTlkMjA0OTJjYzg3"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/movie/watch_later",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								"watch_later"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Watched",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "NmE0NGJhYWM3Y2VkOTlkMjA0OTJjYzg3"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/movie/watched",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								"watched"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/372058?api_key=b35b0e574cfa414bb62d000fc6aa026d&language=pt-br",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"372058"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "b35b0e574cfa414bb62d000fc6aa026d"
+								},
+								{
+									"key": "language",
+									"value": "pt-br"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Popular",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.themoviedb.org/3/movie/popular?api_key=b35b0e574cfa414bb62d000fc6aa026d&language=pt-br",
+							"protocol": "https",
+							"host": [
+								"api",
+								"themoviedb",
+								"org"
+							],
+							"path": [
+								"3",
+								"movie",
+								"popular"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "b35b0e574cfa414bb62d000fc6aa026d"
+								},
+								{
+									"key": "language",
+									"value": "pt-br"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "NmE0NGJhYWM3Y2VkOTlkMjA0OTJjYzg3"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/movie/status/299536",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								"status",
+								"299536"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/movie/comments/299536",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								"comments",
+								"299536"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfavorite",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "NmE0NGJhYWM3Y2VkOTlkMjA0OTJjYzg3"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/movie/unfavorite/299536",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								"unfavorite",
+								"299536"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
