@@ -47,4 +47,11 @@
     <hr>
     <app-carousel [movies]="similar_movies"></app-carousel>
   </div>
+  <div class="row">
+    <div class="col-md-12 comments">
+      <span class="section-title">Comments</span>
+      <hr>
+      <app-comment-list [comments]="comments" [movie]="movie"></app-comment-list>
+    </div>
+  </div>
 </div>

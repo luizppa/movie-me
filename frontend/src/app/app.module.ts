@@ -27,7 +27,8 @@ import { WatchedComponent } from './home/watched/watched.component'
 import { ProfileComponent } from './home/profile/profile.component'
 
 import { UserService } from './shared/services/user.service'
-import { MovieService } from './shared/services/movie.service'
+import { MovieService } from './shared/services/movie.service';
+import { CommentListComponent } from './home/movie/comment-list/comment-list.component'
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { MovieService } from './shared/services/movie.service'
     FavoritesComponent,
     WatchLaterComponent,
     WatchedComponent,
-    ProfileComponent
+    ProfileComponent,
+    CommentListComponent
   ],
   imports: [
     ReactiveFormsModule,

@@ -1,0 +1,63 @@
+.avatar{
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+.name{
+  margin: 0;
+  font-size: 20px;
+}
+.comment-details{
+  margin-left: 130px;
+}
+.comment-text{
+  word-wrap: break-word;
+  margin: 0 0 50px 0;
+  font-size: 18px;
+}
+.material-icons{
+  cursor: pointer;
+  padding: 8px;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.material-icons:hover{
+  color: white;
+  background-color: #d11205;
+  border-color: #c81105;
+}
+.material-icons:active{
+  color: black;
+  background-color: transparent;
+  border-color: black;
+}
+.form-control{
+  width: 80%;
+  margin-bottom: 20px;
+}
+.option{
+  cursor: pointer;
+  display: inline-block;
+  padding: 7px 0 10px 0;
+  height: 45px;
+  width: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 4px;
+}
+.option:hover{
+  background-color: #c81105;
+  border: 1px solid #c81105;
+  color: white;
+}

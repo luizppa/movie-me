@@ -1,0 +1,24 @@
+
+<div class="row">
+  <div class="col-12 new-comment" align="center">
+    <!-- <hr> -->
+    <h3>Write a comment</h3>
+    <textarea [(ngModel)]="comment_text" class="form-control" name="comment" rows="6"></textarea>
+    <span class="option unselectable" (click)="post_comment()">Submit Comment</span>
+    <hr>
+  </div>
+</div>
+<div class="row" *ngFor="let comment of comments">
+  <div class="col-12">
+    <img class="avatar" src="https://abrilexame.files.wordpress.com/2016/09/size_960_16_9_han_solo.jpg?quality=70&strip=info&w=920" alt="">
+    <span class="name">{{ comment.user.name }}</span>
+    <span class="muted"> says:</span>
+    <div class="comment-details">
+      <p class="comment-text">{{ comment.comment_text }}</p>
+      <span class="likes">
+        <i class="material-icons md-18 unselectable" (click)="comment.likes = comment.likes+1">thumb_up</i> Applause: {{ comment.likes }}
+      </span>
+      <hr>
+    </div>
+  </div>
+</div>

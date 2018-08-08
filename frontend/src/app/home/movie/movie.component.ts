@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 
 import { Movie } from '../../shared/models/movie.model'
 import { MovieService } from '../../shared/services/movie.service'
+import { UserService } from '../../shared/services/user.service'
 
 @Component({
   selector: 'app-movie',
@@ -17,8 +18,13 @@ export class MovieComponent implements OnInit {
   public favorite: boolean
   public watch_later: boolean
   public watched: boolean
+  public comments: any[]
 
-  constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private movieService: MovieService,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
     let id = this.activatedRoute.snapshot.params['id']
@@ -57,6 +63,26 @@ export class MovieComponent implements OnInit {
         console.log(error)
       },
       'w185'
+    )
+    this.movieService.comments(id,
+      comments => {
+        this.comments = comments
+        this.comments.sort((a, b) => {
+          let session = this.userService.get_session()
+          if(b.user.id == session.user.id){
+            return 1
+          }
+          else{
+            return 0
+          }
+        })
+        this.comments.forEach(comment => {
+          comment.likes = +comment.likes
+        })
+      },
+      error => {
+        this.comments = []
+      }
     )
   }
 

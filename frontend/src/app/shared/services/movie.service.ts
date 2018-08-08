@@ -297,4 +297,37 @@ export class MovieService {
     }
   }
 
+  public comment(id: number, text: string, callback, callbackErr){
+    let session = this.userService.get_session()
+    let body = {
+      movie_id: id,
+      text: text
+    }
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.post(environment.api_endpoint+'movie/comment', body, options).subscribe(
+        success => {
+          callback(success.json())
+        },
+        error => {
+          callbackErr(error.json())
+        }
+      )
+    }
+  }
+
+  public comments(id: number, callback, callbackErr){
+    this.http.get(environment.api_endpoint+'movie/comments/'+id).subscribe(
+      success => {
+        callback(success.json().comments)
+      },
+      error => {
+        callbackErr(error.json())
+      }
+    )
+  }
+
 }
