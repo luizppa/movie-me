@@ -242,5 +242,39 @@ class Movie extends MovieMeBase{
     if($response) return true;
     else return false;
   }
+
+  public static function comment($user_id, $movie_id, $comment_text){
+    $connection = parent::get_connection();
+    $query = 'INSERT INTO comments (user_id, movie_id, comment_text)
+              VALUES ('.$user_id.', '.$movie_id.', "'.$comment_text.'")';
+
+    $response = mysqli_query($connection, $query);
+    mysqli_close($connection);
+    if($response) return true;
+    else return false;
+  }
+
+  public function comments(){
+    $connection = parent::get_connection();
+    $query = 'SELECT * FROM comments
+             WHERE movie_id = '.$this->id;
+
+    $response = mysqli_query($connection, $query);
+    $rows = mysqli_fetch_all($response, MYSQLI_ASSOC);
+    mysqli_free_result($response);
+    mysqli_close($connection);
+    $comments = array();
+    foreach ($rows as $row) {
+      $comment = array(
+        'id' => $row['id'],
+        'likes' => $row['likes'],
+        'movie_id' => $row['movie_id'],
+        'comment_text' => $row['comment_text'],
+        'user' => User::find($row['user_id'])
+      );
+      array_push($comments, $comment);
+    }
+    return $comments;
+  }
 }
 ?>

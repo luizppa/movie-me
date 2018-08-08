@@ -41,10 +41,12 @@ $app->group(movie, function () use ($app){
   $app->post('/favorite', '\App\Routes\MovieRoutes:make_favorite');
   $app->post('/watch_later', '\App\Routes\MovieRoutes:watch_later');
   $app->post('/watched', '\App\Routes\MovieRoutes:watched');
+  $app->post('/comment', '\App\Routes\MovieRoutes:comment');
   $app->get('/favorites', '\App\Routes\MovieRoutes:get_favorites');
   $app->get('/watch_later', '\App\Routes\MovieRoutes:get_watch_later');
   $app->get('/watched', '\App\Routes\MovieRoutes:get_watched');
   $app->get('/status/{id}', '\App\Routes\MovieRoutes:status');
+  $app->get('/comments/{id}', '\App\Routes\MovieRoutes:comments');
   $app->delete('/unfavorite/{id}', '\App\Routes\MovieRoutes:unfavorite');
   $app->delete('/watch_later/{id}', '\App\Routes\MovieRoutes:remove_watch_later');
   $app->delete('/watched/{id}', '\App\Routes\MovieRoutes:remove_watched');

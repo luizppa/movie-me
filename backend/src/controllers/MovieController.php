@@ -102,6 +102,27 @@ class MovieController {
     }
   }
 
+  public static function comment($user_id, $params){
+    $success = Movie::comment($user_id, $params['movie_id'], $params['text']);
+    if($success){
+      return array('type' => 'Added', 'status' => 201, 'message' => 'Comment created');
+    }
+    else{
+      throw new \Exception("Could not add comment");
+    }
+  }
+
+  public static function get_comments($movie_id){
+    $movie = Movie::find($movie_id);
+    $comments = $movie->comments();
+    if($comments){
+      return array('type' => 'Comments', 'status' => 200, 'message' => 'Get comments', 'comments' => $comments);
+    }
+    else{
+      throw new \Exception("Could not get comment");
+    }
+  }
+
 }
 
 

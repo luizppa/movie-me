@@ -44,7 +44,6 @@ CREATE TABLE comments(
   likes INT NOT NULL DEFAULT 0,
   movie_id INT NOT NULL,
   user_id INT NOT NULL,
-  CONSTRAINT fk_comment_movie FOREIGN KEY (movie_id) REFERENCES movies(id),
   CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES users(id),
   PRIMARY KEY (id)
 );

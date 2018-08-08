@@ -218,6 +218,38 @@ class MovieRoutes{
       return $response->withJson($data)->withStatus(403);
     }
   }
+
+  public function comment($request, $response){
+    $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
+    $body = $request->getParsedBody();
+    $session = Session::find($access_key);
+    if($session){
+      $user = $session->user;
+      try{
+        $data = MovieController::comment($user->id, $body);
+        return $response->withJson($data)->withStatus($data['status']);
+      }
+      catch (\Exception $e) {
+        $data = array('type' => 'Error', 'message' => $e->getMessage());
+        return $response->withJson($data)->withStatus(400);
+      }
+    }
+    else {
+      $data = array('type' => 'Error', 'message' => 'Auth required');
+      return $response->withJson($data)->withStatus(403);
+    }
+  }
+
+  public function comments($request, $response, $args){
+    try{
+      $data = MovieController::get_comments($args['id']);
+      return $response->withJson($data)->withStatus($data['status']);
+    }
+    catch (\Exception $e) {
+      $data = array('type' => 'Error', 'message' => $e->getMessage());
+      return $response->withJson($data)->withStatus(400);
+    }
+  }
 }
 
 ?>
