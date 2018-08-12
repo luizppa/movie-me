@@ -89,6 +89,17 @@ class UserRoutes{
     }
   }
 
+  public function like_comment($request, $response, $args) {
+    $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
+    try {
+      $data = UserController::like_comment($args['id'], $access_key);
+      return $response->withJson($data)->withStatus($data['status']);
+    } catch (\Exception $e) {
+      $data = array('type' => 'Error', 'message' => $e->getMessage());
+      return $response->withJson($data)->withStatus(400);
+    }
+  }
+
   public function logout($request, $response){
     $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
     try {

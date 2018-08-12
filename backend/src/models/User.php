@@ -216,5 +216,24 @@ class User extends MovieMeBase{
       mysqli_close($connection);
       return $response;
     }
+
+    public static function like_comment($id, $user_id){
+      if($user_id != $id){
+        $connection = parent::get_connection();
+        $query = 'SELECT likes FROM comments WHERE id = '.$id;
+        $response = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($response);
+        $likes = $row['likes'];
+        $likes = $likes+1;
+        mysqli_free_result($response);
+        $query = 'UPDATE comments
+                  SET likes = '.$likes.'
+                  WHERE id = '.$id;
+        $response = mysqli_query($connection, $query);
+        mysqli_close($connection);
+        return $response;
+      }
+      else return false;
+    }
 }
 ?>

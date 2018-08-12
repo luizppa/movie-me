@@ -67,6 +67,7 @@ export class MovieComponent implements OnInit {
     this.movieService.comments(id,
       comments => {
         this.comments = comments
+        console.log(this.comments)
         this.comments.sort((a, b) => {
           let session = this.userService.get_session()
           if(b.user.id == session.user.id){

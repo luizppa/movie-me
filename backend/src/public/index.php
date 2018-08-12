@@ -17,7 +17,8 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
 const user = '/user',
-      movie = '/movie';
+      movie = '/movie',
+      comment = '/comment';
 
 session_start();
 
@@ -50,6 +51,10 @@ $app->group(movie, function () use ($app){
   $app->delete('/unfavorite/{id}', '\App\Routes\MovieRoutes:unfavorite');
   $app->delete('/watch_later/{id}', '\App\Routes\MovieRoutes:remove_watch_later');
   $app->delete('/watched/{id}', '\App\Routes\MovieRoutes:remove_watched');
+});
+
+$app->group(comment, function () use ($app){
+  $app->put('/like/{id}', '\App\Routes\UserRoutes:like_comment');
 });
 
 $app->run();

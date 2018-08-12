@@ -547,6 +547,38 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "comment",
+			"description": null,
+			"item": [
+				{
+					"name": "Like",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "YmZjZTU1NzVlY2E4MjA1NjM4YTRmYmM0"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "localhost:8000/comment/like/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comment",
+								"like",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

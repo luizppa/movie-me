@@ -105,6 +105,23 @@ class UserController {
     }
   }
 
+  public static function like_comment($id, $access_key){
+    $session = Session::find($access_key);
+    if($session){
+      $user = $session->user;
+      $success = User::like_comment($id, $user->getId());
+      if($success){
+        return array('type' => 'Ok', 'status' => 200, 'message' => 'Comment liked!');
+      }
+      else{
+        throw new \Exception("Unable to like!");
+      }
+    }
+    else {
+      throw new \Exception("Auth required!");
+    }
+  }
+
   public static function logout($access_key){
     $response = Session::delete($access_key);
     if($response){
@@ -114,6 +131,7 @@ class UserController {
       throw new \Exception("Not logged in");
     }
   }
+
 }
 
 
