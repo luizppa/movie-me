@@ -25,7 +25,10 @@
   border-radius: 50%;
   margin-right: 10px;
 }
-.material-icons:hover{
+.material-icons.disabled{
+  cursor: default;
+}
+.material-icons:hover.enabled{
   color: white;
   background-color: #d11205;
   border-color: #c81105;

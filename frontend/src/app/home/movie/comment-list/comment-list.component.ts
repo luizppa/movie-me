@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core'
 import { Movie } from '../../../shared/models/movie.model'
 import { MovieService } from '../../../shared/services/movie.service'
 import { UserService } from '../../../shared/services/user.service'
+import { CommentService } from '../../../shared/services/comment.service'
 
 @Component({
   selector: 'app-comment-list',
@@ -13,11 +14,17 @@ export class CommentListComponent implements OnInit {
 
   @Input() movie: any
   @Input() comments: any[]
+  public user_id: any
   public comment_text: string
 
-  constructor(private movieService: MovieService, private userService: UserService){}
+  constructor(
+    private movieService: MovieService,
+    private userService: UserService,
+    private commentService: CommentService
+  ){}
 
   ngOnInit() {
+    this.user_id = this.userService.get_session().user.id
   }
 
   public post_comment(){
@@ -36,6 +43,19 @@ export class CommentListComponent implements OnInit {
         },
         error => {
           console.log(error)
+        }
+      )
+    }
+  }
+
+  public like_comment(comment){
+    if(comment.user.id != this.user_id){
+      comment.likes += 1
+      this.commentService.like(comment.id,
+        success => {
+        },
+        error => {
+          comment.likes -= 1
         }
       )
     }

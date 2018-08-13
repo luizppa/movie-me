@@ -10,7 +10,7 @@
   padding: 10vh;
   height: 100% !important;
   margin: 0 !important;
-  background-image: linear-gradient(rgba(20, 20, 20, 1), rgba(20, 20, 20, 0), rgb(240, 240, 240));
+  background-image: linear-gradient(rgba(20, 20, 20, 1), rgba(20, 20, 20, 0), rgba(20, 20, 20, 1));
 }
 .details{
   padding: 10px 50px 0 50px;

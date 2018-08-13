@@ -25,10 +25,11 @@ import { FavoritesComponent } from './home/favorites/favorites.component'
 import { WatchLaterComponent } from './home/watch-later/watch-later.component'
 import { WatchedComponent } from './home/watched/watched.component'
 import { ProfileComponent } from './home/profile/profile.component'
+import { CommentListComponent } from './home/movie/comment-list/comment-list.component'
 
 import { UserService } from './shared/services/user.service'
-import { MovieService } from './shared/services/movie.service';
-import { CommentListComponent } from './home/movie/comment-list/comment-list.component'
+import { MovieService } from './shared/services/movie.service'
+import { CommentService } from './shared/services/comment.service'
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { CommentListComponent } from './home/movie/comment-list/comment-list.com
   ],
   providers: [
     UserService,
-    MovieService
+    MovieService,
+    CommentService
   ],
   bootstrap: [AppComponent]
 })

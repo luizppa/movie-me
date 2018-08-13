@@ -15,8 +15,11 @@
     <span class="muted"> says:</span>
     <div class="comment-details">
       <p class="comment-text">{{ comment.comment_text }}</p>
-      <span class="likes">
-        <i class="material-icons md-18 unselectable" (click)="comment.likes = comment.likes+1">thumb_up</i> Applause: {{ comment.likes }}
+      <span class="likes" *ngIf="comment.user.id != user_id">
+        <i class="material-icons md-18 unselectable enabled" (click)="like_comment(comment)">thumb_up</i> Applause: {{ comment.likes }}
+      </span>
+      <span class="likes" *ngIf="comment.user.id == user_id">
+        <i class="material-icons md-18 unselectable disabled">thumb_up</i> Applause: {{ comment.likes }}
       </span>
       <hr>
     </div>
