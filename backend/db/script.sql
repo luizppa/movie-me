@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS dbMovieme;
-CREATE DATABASE dbMovieme;
-USE dbMovieme;
+DROP DATABASE IF EXISTS heroku_2a46ee8b0cdcdd8;
+CREATE DATABASE heroku_2a46ee8b0cdcdd8;
+USE heroku_2a46ee8b0cdcdd8;
 
 DROP TABLE IF EXISTS users;
 

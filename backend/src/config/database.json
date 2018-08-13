@@ -1,13 +1,13 @@
 {
-  "development": {
-    "host": "localhost",
-    "login":"root",
-    "password":"filmes208",
-    "port": 3306,
-    "database":"dbMovieme"
-  },
-  
   "production": {
+    "host": "us-cdbr-iron-east-01.cleardb.net",
+    "login":"b1a24a32f7eddc",
+    "password":"cd3ed8e4",
+    "port": 3306,
+    "database":"heroku_2a46ee8b0cdcdd8"
+  },
+
+  "development": {
     "host": "localhost",
     "login":"root",
     "password":"filmes208",
