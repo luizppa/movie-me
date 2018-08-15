@@ -9,14 +9,13 @@ $config['addContentLengthHeader'] = false;
 
 $app = new \Slim\App(['setings' => $config]);
 
-$app->add(function ($req, $res, $next) {
-  $response = $next($req, $res);
-  return $response
-          ->withHeader('Access-Control-Allow-Origin', '*')
-          ->withHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-          ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')
-          ->withHeader("Access-Control-Allow-Credentials", "true");
-});
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: GET, POST, DELETE, PUT");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
 
 const user = '/user',
       movie = '/movie',
