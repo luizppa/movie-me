@@ -20,7 +20,7 @@ abstract class MovieMeBase implements Record{
 
   public static function get_connection(){
     $credentials = self::get_mysql_credentials();
-    $db_credentials = $credentials['production'];
+    $db_credentials = $credentials['development'];
     $connection = mysqli_connect($db_credentials['host'], $db_credentials['login'], $db_credentials['password'], $db_credentials['database']);
     return $connection;
   }
