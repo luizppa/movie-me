@@ -9,23 +9,9 @@ import { Router } from '@angular/router'
 })
 export class InitialComponent implements OnInit {
 
-  public query: string
-
   constructor(private router: Router) { }
 
   ngOnInit() {
-  }
-
-  public onKeydown(event){
-    if (event.key === "Enter") {
-      this.search()
-    }
-  }
-
-  public search(){
-    if(this.query.length){
-      this.router.navigate(['search', '1'], { queryParams: {search: this.query}})
-    }
   }
 
 }

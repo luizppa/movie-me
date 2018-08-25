@@ -16,8 +16,10 @@ export class MovieSearchComponent implements OnInit {
   constructor(private movieService: MovieService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    this.query = this.activatedRoute.snapshot.queryParams['search']
-    this.movie_src = (page, callback, callbackErr, size) => {this.movieService.search(page, callback, callbackErr, size)}
+    this.activatedRoute.queryParams.subscribe(queryParams => {
+      this.query = queryParams['search']
+      this.movie_src = (page, callback, callbackErr, size) => {this.movieService.search(page, callback, callbackErr, size)}
+    })
   }
 
 }

@@ -1,3 +1,7 @@
+.search{
+  width: 50% !important;
+  margin: 10px auto 20px auto !important;
+}
 .jumbotron{
   color: white;
   margin: 0px -15px;

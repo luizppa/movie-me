@@ -17,6 +17,9 @@ hr{
 .name{
   font-size: 22px;
 }
+.input-group-prepend{
+  width: 50px;
+}
 .options{
   font-size: 15px;
 }

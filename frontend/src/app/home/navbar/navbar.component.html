@@ -5,6 +5,14 @@
       <span class="name">{{ user.name }}</span>
   </div>
   <hr>
+
+  <div class="mb-4 input-group search">
+    <div class="input-group-prepend pointer" (click)="search()">
+      <div class="input-group-text"><i class="material-icons">search</i></div>
+    </div>
+    <input [(ngModel)]="query" class="form-control" type="text" name="" value="" placeholder="Search" (keydown)="onKeydown($event)">
+  </div>
+
   <div class="options">
     <span class="item" routerLink="/"><i class="material-icons">home</i>Home</span>
     <span class="item" routerLink="/profile"><i class="material-icons">person_outline</i>Profile</span>

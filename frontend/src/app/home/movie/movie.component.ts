@@ -111,6 +111,16 @@ export class MovieComponent implements OnInit {
           console.log(error)
         }
       )
+      if(!this.watched){
+        this.movieService.watched(this.movie,
+          success => {
+            this.watched = true
+          },
+          error => {
+            console.log(error)
+          }
+        )
+      }
     }
   }
 
@@ -147,6 +157,14 @@ export class MovieComponent implements OnInit {
           console.log(error)
         }
       )
+      this.movieService.unfavorite(this.movie.id,
+        success => {
+          this.favorite = false
+        },
+        error => {
+          console.log(error)
+        }
+      )
     }
     else {
       this.movieService.watched(this.movie,
@@ -157,6 +175,16 @@ export class MovieComponent implements OnInit {
           console.log(error)
         }
       )
+      if(this.watch_later){
+        this.movieService.undo_watch_later(this.movie.id,
+          success => {
+            this.watch_later = false
+          },
+          error => {
+            console.log(error)
+          }
+        )
+      }
     }
   }
 

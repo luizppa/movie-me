@@ -29,6 +29,7 @@ export class MoviePageComponent implements OnInit {
     })
     this.activatedRoute.queryParams.subscribe(query_params => {
       this.query_params = query_params
+      this.get_movies()
     })
   }
 

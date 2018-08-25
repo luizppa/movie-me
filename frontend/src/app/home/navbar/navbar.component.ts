@@ -12,6 +12,7 @@ import { User } from '../../shared/models/user.model'
 export class NavbarComponent implements OnInit {
   public session: any
   public user: User
+  public query: string
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -29,6 +30,18 @@ export class NavbarComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+
+  public onKeydown(event){
+    if (event.key === "Enter") {
+      this.search()
+    }
+  }
+
+  public search(){
+    if(this.query.length){
+      this.router.navigate(['search', '1'], { queryParams: {search: this.query}})
+    }
   }
 
 }
