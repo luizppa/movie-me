@@ -1,62 +1,49 @@
-<div class="row">
-  <div class="background">
-    <img class="live-background" src="assets/iw.gif" alt="">
+<div class="p-0 m-0 row canvas">
+  <div class="p-0 m-0 d-none d-md-inline-block col-sm-12 col-xs-12 col-md-9 col-lg-9 background">
+    <img class="p-0 col-12 live-background" src="assets/mickey.gif" alt="">
   </div>
-  <div class="filter">
-    <div class="row justify-content-center">
-      <div class="form col-lg-7 col-md-8 col-sm-8 col-xs-10" align="center">
-        <span class="title">Register</span>
-        <form [formGroup]="signupForm">
-          <hr>
-          <div class="row">
-            <div class="col-12">
-              <div class="row">
-                <div class="form-group col-12">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" formControlName="email" id="email">
-                  <small *ngIf="signupForm.controls.email.invalid && signupForm.controls.email.touched">Invalid email</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <div class="row">
-                <div class="form-group col-12">
-                  <label for="name">Name</label>
-                  <input type="text" class="form-control" formControlName="name" id="name">
-                  <small *ngIf="signupForm.controls.name.invalid && signupForm.controls.name.touched">Invalid name</small>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group col-12">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" formControlName="password" id="password">
-                  <small *ngIf="signupForm.controls.password.invalid && signupForm.controls.password.touched">Invalid password</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="row">
-                <div class="form-group col-12">
-                  <label for="age">Age</label>
-                  <input type="number" class="form-control" formControlName="age" id="age">
-                  <small *ngIf="signupForm.controls.age.invalid && signupForm.controls.age.touched">Invalid age</small>
-                </div>
-              </div>
-              <div class="row">
-                <div class="form-group col-12">
-                  <label for="repeat-password">Repeat Password</label>
-                  <input type="password" class="form-control" formControlName="repeat-password" id="repeat-password">
-                  <small *ngIf="signupForm.value['password'] !== signupForm.value['repeat-password'] && signupForm.controls['repeat-password'].touched">Passwords must match</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr>
-          <button type="button" class="btn btn-danger" (click)="submit()">Sign Up</button>
-        </form>
-      </div>
+
+  <div class="m-0 col-sm-12 col-md-3 col-lg-3" >
+    <div class="form" align="center">
+      <span class="title">Register</span>
+
+      <form [formGroup]="signupForm">
+        <hr>
+        <div class="col-12">
+          <label class="mt-2" for="email">Email:</label>
+          <input class="" placeholder="E-mail" type="email" class="form-control" formControlName="email" id="email">
+          <small *ngIf="signupForm.controls.email.invalid && signupForm.controls.email.touched">Invalid email</small>
+        </div>
+
+        <div class="col-12">
+          <label class="mt-2" for="name">Name:</label>
+          <input class="" placeholder="Name" type="text" class="form-control" formControlName="name" id="name">
+          <small *ngIf="signupForm.controls.name.invalid && signupForm.controls.name.touched">Invalid name</small>
+        </div>
+
+        <div class="col-12">
+          <label class="mt-2" for="age">Age:</label>
+          <input class="" placeholder="Age" type="number" class="form-control" formControlName="age" id="age">
+          <small *ngIf="signupForm.controls.age.invalid && signupForm.controls.age.touched">Invalid age</small>
+        </div>
+
+        <div class="col-12">
+          <label class="mt-2" for="password">Password:</label>
+          <input class="" placeholder="Password" type="password" class=" form-control" formControlName="password" id="password">
+          <small *ngIf="signupForm.controls.password.invalid && signupForm.controls.password.touched">Invalid password</small>
+        </div>
+
+        <div class="col-12">
+          <label class="mt-2 mb-2" for="repeat-password">Repeat Password:</label>
+          <input class="mb-3" placeholder="Repeat Password" type="password" class=" form-control" formControlName="repeat-password" id="repeat-password">
+          <small *ngIf="signupForm.value['password'] !== signupForm.value['repeat-password'] && signupForm.controls['repeat-password'].touched">Passwords must match</small>
+        </div>
+
+        <div class="mt-2 col-12">
+          <hr class="mt-2">
+          <button type="button" class="mt-3 btn btn-danger" (click)="submit()">Sign Up</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
