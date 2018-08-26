@@ -8,19 +8,21 @@ class User extends MovieMeBase{
     public $description;
     public $age;
     public $email;
+    public $watched_time;
     private $password;
 
     // Constructors
 
-    function __construct ($name, $age, $email, $description = "") {
+    function __construct ($name, $age, $email, $watched_time, $description = "") {
       $this->name = $name;
       $this->description = $description;
       $this->age = $age;
       $this->email = $email;
+      $this->watched_time = $watched_time;
     }
 
-    public static function withId($name, $age, $email, $description = "", $id) {
-      $instance = new User($name, $age, $email, $description);
+    public static function withId($name, $age, $email, $watched_time, $description = "", $id) {
+      $instance = new User($name, $age, $email, $watched_time, $description);
       $instance->id = $id;
       return $instance;
     }
@@ -30,7 +32,8 @@ class User extends MovieMeBase{
       $description = $params['description'];
       $age = $params['age'];
       $email = $params['email'];
-      $instance = new User($name, $age, $email, $description);
+      $watched_time = $params['watched_time'];
+      $instance = new User($name, $age, $email, $watched_time, $description);
       if(array_key_exists('id', $params)) $instance->id = $params['id'];
       return $instance;
     }

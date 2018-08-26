@@ -3,9 +3,13 @@ small{
 }
 .background{
   overflow: hidden !important;
+  margin-left: -15px !important;
+  height: 100vh;
 }
 .live-background{
   overflow: hidden !important;
+  height: 100vh;
+  object-fit: cover;
 }
 .form{
   z-index: 2;

@@ -200,12 +200,12 @@ class MovieRoutes{
 
   public function remove_watched($request, $response, $args){
     $access_key = $request->getHeaders()['HTTP_AUTHORIZATION'][0];
-    $body = $request->getParsedBody();
+    $params = $request->getQueryParams();
     $session = Session::find($access_key);
     if($session){
       $user = $session->user;
       try{
-        $data = MovieController::remove_watched($args['id'], $user->id);
+        $data = MovieController::remove_watched($args['id'], $user->id, $params['runtime']);
         return $response->withJson($data)->withStatus($data['status']);
       }
       catch (\Exception $e) {

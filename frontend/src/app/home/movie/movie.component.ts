@@ -67,7 +67,6 @@ export class MovieComponent implements OnInit {
     this.movieService.comments(id,
       comments => {
         this.comments = comments
-        console.log(this.comments)
         this.comments.sort((a, b) => {
           let session = this.userService.get_session()
           if(b.user.id == session.user.id){
@@ -149,7 +148,7 @@ export class MovieComponent implements OnInit {
 
   public toggle_watched(){
     if(this.watched){
-      this.movieService.undo_watched(this.movie.id,
+      this.movieService.undo_watched(this.movie.id, this.movie.runtime,
         success => {
           this.watched = false
         },

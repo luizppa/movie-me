@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use \App\Models\Movie as Movie;
+use \App\Models\User as User;
 
 class MovieController {
 
@@ -80,6 +81,9 @@ class MovieController {
     }
     $success = Movie::watched($user_id, $movie->id);
     if($success){
+      $user = User::find($user_id);
+      $watched_time = $user->watched_time += $params['runtime'];
+      User::update_one(array('watched_time' => $watched_time), array('id' => $user->getId()));
       return array('type' => 'Added', 'status' => 201, 'message' => 'Movie successfuly added');
     }
     else{
@@ -92,9 +96,12 @@ class MovieController {
     return array('type' => 'Found', 'status' => 200, 'message' => 'Movies found', 'movies' => $movies);
   }
 
-  public static function remove_watched($movie_id, $user_id){
+  public static function remove_watched($movie_id, $user_id, $runtime){
     $success = Movie::remove_watched($user_id, $movie_id);
     if($success){
+      $user = User::find($user_id);
+      $watched_time = $user->watched_time -= $runtime;
+      User::update_one(array('watched_time' => $watched_time), array('id' => $user->getId()));
       return array('type' => 'Removed', 'status' => 200, 'message' => 'Movie successfuly removed');
     }
     else{
@@ -114,12 +121,12 @@ class MovieController {
 
   public static function get_comments($movie_id){
     $movie = Movie::find($movie_id);
-    $comments = $movie->comments();
-    if($comments){
+    if($movie){
+      $comments = $movie->comments();
       return array('type' => 'Comments', 'status' => 200, 'message' => 'Get comments', 'comments' => $comments);
     }
     else{
-      throw new \Exception("Could not get comment");
+      return array('type' => 'Comments', 'status' => 204, 'message' => 'Get comments');
     }
   }
 

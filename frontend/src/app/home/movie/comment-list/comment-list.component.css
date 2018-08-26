@@ -34,7 +34,7 @@
   border-color: #c81105;
 }
 .material-icons:active{
-  color: black;
+  color: inherit;
   background-color: transparent;
   border-color: black;
 }

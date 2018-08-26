@@ -224,7 +224,8 @@ export class MovieService {
       title: movie.title,
       overview: movie.overview,
       release_date: movie.release_date,
-      vote_average: movie.vote_average
+      vote_average: movie.vote_average,
+      runtime: movie.runtime
     }
     let session = this.userService.get_session()
     if(session){
@@ -261,14 +262,14 @@ export class MovieService {
     }
   }
 
-  public undo_watched(id: number, callback, callbackErr){
+  public undo_watched(id: number, runtime: number, callback, callbackErr){
     let session = this.userService.get_session()
     if(session){
       let headers = new Headers();
       headers.append('Authorization', session.access_key);
       let options = new RequestOptions({ headers });
 
-      this.http.delete(environment.api_endpoint+'movie/watched/'+id, options).subscribe(
+      this.http.delete(environment.api_endpoint+'movie/watched/'+id+'?runtime='+runtime, options).subscribe(
         success => {
           callback(success.json())
         },
@@ -322,7 +323,10 @@ export class MovieService {
   public comments(id: number, callback, callbackErr){
     this.http.get(environment.api_endpoint+'movie/comments/'+id).subscribe(
       success => {
-        callback(success.json().comments)
+        if(success.json()){
+          let comments = success.json().comments || []
+          callback(comments)
+        }
       },
       error => {
         callbackErr(error.json())

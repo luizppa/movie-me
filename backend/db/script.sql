@@ -2,15 +2,20 @@ DROP DATABASE IF EXISTS heroku_2a46ee8b0cdcdd8;
 CREATE DATABASE heroku_2a46ee8b0cdcdd8;
 USE heroku_2a46ee8b0cdcdd8;
 
+-- DROP DATABASE IF EXISTS dbMovieme;
+-- CREATE DATABASE dbMovieme;
+-- USE dbMovieme;
+
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
    id INT NOT NULL AUTO_INCREMENT,
    name VARCHAR(255) NOT NULL,
-   description VARCHAR(255),
    age INT NOT NULL,
    email VARCHAR(255) NOT NULL UNIQUE,
    password VARCHAR(255) NOT NULL,
+   description VARCHAR(255),
+   watched_time INT NOT NULL DEFAULT 0,
    PRIMARY KEY (id)
 );
 
