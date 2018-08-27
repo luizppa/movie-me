@@ -1,10 +1,10 @@
-DROP DATABASE IF EXISTS heroku_2a46ee8b0cdcdd8;
-CREATE DATABASE heroku_2a46ee8b0cdcdd8;
-USE heroku_2a46ee8b0cdcdd8;
+-- DROP DATABASE IF EXISTS heroku_2a46ee8b0cdcdd8;
+-- CREATE DATABASE heroku_2a46ee8b0cdcdd8;
+-- USE heroku_2a46ee8b0cdcdd8;
 
--- DROP DATABASE IF EXISTS dbMovieme;
--- CREATE DATABASE dbMovieme;
--- USE dbMovieme;
+DROP DATABASE IF EXISTS dbMovieme;
+CREATE DATABASE dbMovieme;
+USE dbMovieme;
 
 DROP TABLE IF EXISTS users;
 
@@ -85,5 +85,3 @@ CREATE TABLE watched(
   CONSTRAINT fk_watched_user FOREIGN KEY (user_id) REFERENCES users(id),
   PRIMARY KEY (id)
 );
-
-INSERT INTO users (name, age, email, password) VALUES ('Luiz Philippe', 20, 'luizphilippep@gmail.com', '123456');

@@ -10,7 +10,7 @@
   "development": {
     "host": "localhost",
     "login":"root",
-    "password":"filmes208",
+    "password":"starman2001",
     "port": 3306,
     "database":"dbMovieme"
   }
