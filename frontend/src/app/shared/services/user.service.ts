@@ -71,6 +71,25 @@ export class UserService {
     }
   }
 
+  public update(id, updates: any, callback, callbackErr){
+    let session = this.get_session()
+
+    if(session){
+      let headers = new Headers();
+      headers.append('Authorization', session.access_key);
+      let options = new RequestOptions({ headers });
+
+      this.http.put(environment.api_endpoint+'user/update', updates, options).subscribe(
+        success => {
+          callback(success.json())
+        },
+        error => {
+          callbackErr(error.json())
+        }
+      )
+    }
+  }
+
   public get_session(){
     return JSON.parse(localStorage.getItem('session'))
   }

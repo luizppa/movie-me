@@ -8,11 +8,20 @@
       <img src="https://abrilexame.files.wordpress.com/2016/09/size_960_16_9_han_solo.jpg?quality=70&strip=info&w=920" alt="">
     </div>
     <div class="name">
-      <h4>{{ profile.name }}<span> | Tempo assistido: {{ profile.watched_time }}</span></h4>
+      <h4>{{ profile.name }}</h4>
     </div>
   </div>
-  <div class="details">
-    <p class="description">{{ profile.description || 'No description provided'}}</p>
+  <div class="details" align="center">
+    <span class="watched_time">Watched Time: {{ watched_time }}</span>
+    <div *ngIf="!editing_description">
+      <p class="description" [class.muted]="!profile.description">{{ '"'+profile.description+'"' || 'No description provided'}}</p>
+      <span class="edit-description link" (click)="editing_description = true">Edit description</span>
+    </div>
+    <div *ngIf="editing_description" align="center">
+      <textarea class="description-edit" [(ngModel)]="new_description"></textarea><br>
+      <span class="monive-me-btn red" (click)="edit_description()">Save</span>
+      <span class="monive-me-btn" (click)="cancel_edit_description()">Cancel</span>
+    </div>
   </div>
   <div class="movies">
     <div id="favorites" *ngIf="favorites">

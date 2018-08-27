@@ -59,3 +59,34 @@
   height: 100%;
   object-fit: cover;
 }
+.monive-me-btn{
+  cursor: pointer;
+  display: inline-block;
+  padding: 7px 0 10px 0;
+  height: 45px;
+  width: auto;
+  min-width: 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 4px;
+  margin: 8px;
+  padding: 5px;
+}
+.option:hover{
+  background-color: #c81105;
+  border: 1px solid #c81105;
+  color: white;
+}
+.option:active{
+  background-color: #bd1106;
+}
+.monive-me-btn.red{
+  background-color: #d11205;
+  border: 1px solid #c81105;
+  color: white;
+}
