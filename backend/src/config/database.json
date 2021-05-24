@@ -1,16 +1,16 @@
 {
   "production": {
-    "host": "us-cdbr-iron-east-01.cleardb.net",
-    "login":"b1a24a32f7eddc",
-    "password":"cd3ed8e4",
+    "host": "tvcpw8tpu4jvgnnq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "login":"fc9pt1bi4jk2sn23",
+    "password":"fqjgrmmwaqzvsv58",
     "port": 3306,
-    "database":"heroku_2a46ee8b0cdcdd8"
+    "database":"tyo4wve54ety9ak1"
   },
 
   "development": {
     "host": "localhost",
     "login":"root",
-    "password":"starman2001",
+    "password":"1234",
     "port": 3306,
     "database":"dbMovieme"
   }
