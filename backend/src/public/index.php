@@ -24,7 +24,7 @@ const user = '/user',
 session_start();
 
 $app->options('/[{path:.*}]', function($request, $response){
-  return $response->withStatus(200);
+  return $response->withJson('Ok')->withStatus(200);
 });
 
 $app->group(user, function () use ($app) {

@@ -1,10 +1,10 @@
 {
   "production": {
-    "host": "tvcpw8tpu4jvgnnq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "login":"fc9pt1bi4jk2sn23",
-    "password":"fqjgrmmwaqzvsv58",
+    "host": "localhost",
+    "login":"root",
+    "password":"1234",
     "port": 3306,
-    "database":"tyo4wve54ety9ak1"
+    "database":"dbMovieme"
   },
 
   "development": {
