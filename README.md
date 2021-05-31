@@ -32,4 +32,4 @@ From the `backend/src/` directory run:
 ```
 $ composer install && php -S localhost:8080 -t public
 ```
-To build run you got to configure a server like Apache or Nginx, which I won't cover here.
+To deploy the application you will need to configure a server like Apache or Nginx, which I won't cover here.
